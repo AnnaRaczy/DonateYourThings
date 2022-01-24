@@ -1,0 +1,12 @@
+@import "./generic/reset";
+@import "./settings/fonts";
+@import "./settings/colors";
+@import "./settings/buttons";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-base;
+}
