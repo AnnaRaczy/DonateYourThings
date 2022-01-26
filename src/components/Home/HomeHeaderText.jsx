@@ -1,16 +1,16 @@
 import React from "react";
 
 const Organize = () => {
-  return <button>Organize collection</button>;
+  return <a className="header_content--btn">Organize collection</a>;
 };
 
 const Donate = () => {
-  return <button>Donate</button>;
+  return <a className="header_content--btn content--left">Donate</a>;
 };
 
 const ContentButtons = () => {
   return (
-    <div>
+    <div className="header_content--buttons">
       <Donate />
       <Organize />
     </div>
@@ -19,7 +19,7 @@ const ContentButtons = () => {
 
 const ContentText = () => {
   return (
-    <div>
+    <div className="header_content--title">
       <p>Start helping!</p>
       <p>Donate your things.</p>
     </div>

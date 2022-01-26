@@ -1,7 +1,7 @@
 import React from "react";
 
 const AboutPhoto = () => {
-  return <div class="sth"></div>;
+  return <div className="sth"></div>;
 };
 
 const AboutText = () => {

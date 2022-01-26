@@ -4,7 +4,7 @@ import { ContentText, ContentButtons } from "./HomeHeaderText";
 
 const Content = () => {
   return (
-    <div>
+    <div className="header_content">
       <ContentText />
       <ContentButtons />
     </div>
@@ -13,7 +13,7 @@ const Content = () => {
 
 const Header = () => {
   return (
-    <div>
+    <div className="header_buttons">
       <LoginButtons />
       <InfoButtons />
     </div>
@@ -22,7 +22,7 @@ const Header = () => {
 
 function HomeHeader() {
   return (
-    <div>
+    <div className="header_container">
       <Header />
       <Content />
     </div>

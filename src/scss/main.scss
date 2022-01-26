@@ -10,3 +10,79 @@
 body {
   font-family: $font-base;
 }
+
+// HomeHeader
+
+.header_container {
+  height: 100vh;
+  background-image: url("../assets/Home-Hero-Image.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: -280px;
+
+  .header_buttons {
+    text-align: right;
+    padding-top: 1.5rem;
+    padding-right: 3rem;
+
+    &--login {
+      color: $header_login-btn;
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .header_login--btn {
+    margin-left: 0.6rem;
+    padding: 0.4em 0.7em;
+  }
+
+  .header_signup {
+    border: 0.75px solid $signup_header-btn;
+  }
+
+  .header_info--btn {
+    margin-left: 3.3rem;
+    color: $header_info-btn;
+    font-size: 0.9rem;
+    letter-spacing: 0.02rem;
+  }
+
+  .header_login--btn:hover,
+  .header_info--btn:hover,
+  .header_content--btn:hover {
+    cursor: pointer;
+  }
+
+  .header_content {
+    position: absolute;
+    right: 25%;
+    top: 35%;
+
+    &--title {
+      text-align: center;
+      color: $header_info-btn;
+      letter-spacing: 0.15rem;
+      font-size: 1.8rem;
+      line-height: 40px;
+    }
+    .header_content--buttons {
+      margin-top: 3rem;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .header_content--btn {
+      border: 0.75px solid $header_info-btn;
+      text-transform: uppercase;
+      padding: 0.5em 1.2em;
+      width: 47%;
+      text-align: center;
+      color: $header_info-btn;
+      border-radius: 2px;
+    }
+
+    .content--left {
+      text-align: center;
+    }
+  }
+}

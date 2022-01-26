@@ -1,23 +1,23 @@
 import React from "react";
 
 const Contact = () => {
-  return <button>Contact</button>;
+  return <a className="header_info--btn">Contact</a>;
 };
 
 const Charity = () => {
-  return <button>Charity</button>;
+  return <a className="header_info--btn">Charity</a>;
 };
 
 const About = () => {
-  return <button>About Us</button>;
+  return <a className="header_info--btn">About Us</a>;
 };
 
 const Story = () => {
-  return <button>Story</button>;
+  return <a className="header_info--btn">Story</a>;
 };
 
 const Start = () => {
-  return <button>Start</button>;
+  return <a className="header_info--btn">Start</a>;
 };
 
 const InfoButtons = () => {
@@ -33,16 +33,16 @@ const InfoButtons = () => {
 };
 
 const Login = () => {
-  return <button>Log in </button>;
+  return <a className="header_login--btn">Log in</a>;
 };
 
 const Signup = () => {
-  return <button>Sign up</button>;
+  return <a className="header_login--btn header_signup">Sign up</a>;
 };
 
 const LoginButtons = () => {
   return (
-    <div>
+    <div className="header_buttons--login">
       <Login />
       <Signup />
     </div>

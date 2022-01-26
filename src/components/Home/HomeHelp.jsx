@@ -1,7 +1,7 @@
 import React from "react";
 
 const ListOrganizations = () => {
-  return <div class="pagination"></div>;
+  return <div className="pagination"></div>;
 };
 
 const HelpText = () => {
