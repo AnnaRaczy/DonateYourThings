@@ -1,11 +1,27 @@
 import React from "react";
+import { Link } from "react-scroll";
 
 const Organize = () => {
-  return <a className="header_content--btn">Organize collection</a>;
+  return (
+    <a href="" className="header_content--btn">
+      Organize collection
+    </a>
+  );
 };
 
 const Donate = () => {
-  return <a className="header_content--btn content--left">Donate</a>;
+  return (
+    <Link
+      to="donate"
+      spy={true}
+      smooth={true}
+      offset={50}
+      duration={500}
+      className="header_content--btn content--left"
+    >
+      Donate
+    </Link>
+  );
 };
 
 const ContentButtons = () => {

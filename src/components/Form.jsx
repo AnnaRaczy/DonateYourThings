@@ -4,4 +4,4 @@ function Form() {
   return <div>Return stuff</div>;
 }
 
-export default Form;
+export { Form };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return <a className="header_info--btn">Contact</a>;
@@ -33,11 +34,19 @@ const InfoButtons = () => {
 };
 
 const Login = () => {
-  return <a className="header_login--btn">Log in</a>;
+  return (
+    <Link to="/login" className="header_login--btn">
+      Log in
+    </Link>
+  );
 };
 
 const Signup = () => {
-  return <a className="header_login--btn header_signup">Sign up</a>;
+  return (
+    <Link to="/signup" className="header_login--btn header_signup">
+      Sign up
+    </Link>
+  );
 };
 
 const LoginButtons = () => {

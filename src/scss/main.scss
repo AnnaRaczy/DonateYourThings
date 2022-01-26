@@ -34,6 +34,7 @@ body {
   .header_login--btn {
     margin-left: 0.6rem;
     padding: 0.4em 0.7em;
+    text-decoration: none;
   }
 
   .header_signup {
@@ -79,6 +80,7 @@ body {
       text-align: center;
       color: $header_info-btn;
       border-radius: 2px;
+      text-decoration: none;
     }
 
     .content--left {

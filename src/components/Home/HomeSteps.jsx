@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FourthStep = () => {
   return (
@@ -55,7 +56,11 @@ const Steps = () => {
 };
 
 const StepsButton = () => {
-  return <button>Donate</button>;
+  return (
+    <Link to="/login" className="header_login--btn">
+      Donate
+    </Link>
+  );
 };
 
 const Title = () => {
@@ -64,7 +69,7 @@ const Title = () => {
 
 const HomeSteps = () => {
   return (
-    <div>
+    <div id="donate">
       <Title />
       <Steps />
       <StepsButton />
