@@ -29,4 +29,4 @@ function HomeHeader() {
   );
 }
 
-export { HomeHeader };
+export { HomeHeader, Header };

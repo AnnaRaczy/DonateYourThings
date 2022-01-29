@@ -38,6 +38,7 @@ const ContentText = () => {
     <div className="header_content--title">
       <p>Start helping!</p>
       <p>Donate your things.</p>
+      <hr className="header_content--hr"></hr>
     </div>
   );
 };

@@ -1,81 +1,79 @@
-// import { createContext, useContext, useEffect, useState } from "react";
-// import {
-//   getAuth,
-//   createUserWithEmailAndPassword,
-//   signInWithEmailAndPassword,
-//   signInWithPopup,
-//   GoogleAuthProvider,
-//   updateProfile,
-//   signOut,
-//   onAuthStateChanged,
-// } from "firebase/auth";
+import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+  updateProfile,
+  signOut,
+  onAuthStateChanged,
+} from "firebase/auth";
 
-// const AuthContext = createContext();
+import { auth } from "../js/firebase-config";
 
-// export function useAuth() {
-//   return useContext(AuthContext);
-// }
+const AuthContext = createContext();
 
-// export function AuthProvider({ children }) {
-//   const auth = getAuth();
-//   const [currentUser, setCurrentUser] = useState();
+export function useAuth() {
+  return useContext(AuthContext);
+}
 
-//   async function logUserIn(email, password) {
-//     await signInWithEmailAndPassword(auth, email, password).catch((error) => {
-//       throw error;
-//     });
-//   }
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState();
 
-//   async function logUserInWithGoogle() {
-//     const auth = getAuth();
-//     const provider = new GoogleAuthProvider();
+  async function logUserIn(email, password) {
+    console.log(email, password);
+    await signInWithEmailAndPassword(auth, email, password).catch((error) => {
+      console.log(error);
+      throw error;
+    });
+  }
 
-//     await signInWithPopup(auth, provider).catch((error) => {
-//       throw error;
-//     });
-//   }
+  async function logUserInWithGoogle() {
+    const provider = new GoogleAuthProvider();
 
-//   async function signUserOut() {
-//     const auth = getAuth();
-//     await signOut(auth).catch((error) => {
-//       throw error;
-//     });
-//   }
+    await signInWithPopup(auth, provider).catch((error) => {
+      throw error;
+    });
+  }
 
-//   async function signUserUp(name, email, password) {
-//     const auth = getAuth();
-//     await createUserWithEmailAndPassword(auth, email, password)
-//       .then(() => {
-//         updateProfile(auth.currentUser, {
-//           displayName: name,
-//         });
-//       })
-//       .catch((error) => {
-//         throw error;
-//       });
-//   }
+  async function signUserOut() {
+    await signOut(auth).catch((error) => {
+      throw error;
+    });
+  }
 
-//   function getUser() {
-//     return currentUser;
-//   }
+  async function signUserUp(name, email, password) {
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        });
+      })
+      .catch((error) => {
+        throw error;
+      });
+  }
 
-//   useEffect(() => {
-//     const auth = getAuth();
-//     const unsubscribe = onAuthStateChanged(auth, (user) => {
-//       setCurrentUser(user);
-//     });
+  function getUser() {
+    return currentUser;
+  }
 
-//     return unsubscribe;
-//   }, []);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    });
 
-//   const value = {
-//     currentUser,
-//     getUser,
-//     logUserIn,
-//     logUserInWithGoogle,
-//     signUserOut,
-//     signUserUp,
-//   };
+    return unsubscribe;
+  }, []);
 
-//   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-// }
+  const value = {
+    currentUser,
+    getUser,
+    logUserIn,
+    logUserInWithGoogle,
+    signUserOut,
+    signUserUp,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}

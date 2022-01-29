@@ -42,7 +42,7 @@ const ColumnLeft = () => {
 
 function HomeColumns() {
   return (
-    <div>
+    <div className="columns_wrapper">
       <ColumnLeft />
       <ColumnMiddle />
       <ColumnRight />
