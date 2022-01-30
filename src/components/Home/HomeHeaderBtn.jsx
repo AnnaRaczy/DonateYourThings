@@ -12,7 +12,18 @@ const Charity = () => {
 };
 
 const About = () => {
-  return <a className="header_info--btn">About Us</a>;
+  return (
+    <LinkScroll
+      to="about"
+      spy={true}
+      smooth={true}
+      offset={50}
+      duration={500}
+      className="header_info--btn"
+    >
+      About Us
+    </LinkScroll>
+  );
 };
 
 const Story = () => {

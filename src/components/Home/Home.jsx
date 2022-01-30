@@ -22,21 +22,3 @@ const Home = () => {
 };
 
 export { Home };
-
-{
-  /* <h1>Home Page</h1>
-<button
-  onClick={() => {
-    navigate("/login");
-  }}
->
-  Log in
-</button>
-<button
-  onClick={() => {
-    navigate("/signup");
-  }}
->
-  Sign up
-</button> */
-}

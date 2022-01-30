@@ -1,27 +1,27 @@
 import React from "react";
 
 const AboutPhoto = () => {
-  return <div className="sth"></div>;
+  return <div className="about_text--img"></div>;
 };
 
 const AboutText = () => {
   return (
-    <div>
-      <h1>About Us</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias
-        suscipit, repudiandae illo error placeat maxime obcaecati vitae
-        dignissimos velit, quos animi a numquam quisquam exercitationem facilis
-        ducimus, ex non neque.
+    <div className="about_text--box">
+      <h1 className="about_text--title">About Us</h1>
+      <hr className="about_text--hr"></hr>
+      <p className="about_text--content">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor culpa,
+        assumenda iusto consequuntur aspernatur alias ad at ab vitae,
+        dignissimos deleniti unde aperiam explicabo earum ipsam.
       </p>
-      {/* <img>Signature</img> */}
+      <div className="about_text--signature"></div>
     </div>
   );
 };
 
 const HomeAboutUs = () => {
   return (
-    <div>
+    <div id="about" className="about_wrapper">
       <AboutText />
       <AboutPhoto />
     </div>

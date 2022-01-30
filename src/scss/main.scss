@@ -379,8 +379,60 @@ body {
 
   .steps_btn {
     margin-top: 2rem;
-    margin-bottom: 1rem;
     font-family: $header_info-btn;
     font-weight: 300;
+  }
+}
+
+// About Us
+
+.about_wrapper {
+  margin-top: 3.5rem;
+  display: flex;
+  height: 500px;
+  color: $header_info-btn;
+  font-family: $font-base;
+
+  .about_text--box {
+    background: $login_background 0% 0% no-repeat padding-box;
+    width: 50%;
+    text-align: center;
+    padding: 2em 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .about_text--title {
+      font-size: 1.4rem;
+    }
+
+    .about_text--hr {
+      margin-top: 1rem;
+      width: 40%;
+    }
+
+    .about_text--content {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      letter-spacing: -0.6px;
+      line-height: 25px;
+      margin-bottom: 1rem;
+    }
+
+    .about_text--signature {
+      height: 100px;
+      background-image: url("../assets/Signature.svg");
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position: right;
+    }
+  }
+
+  .about_text--img {
+    height: 100%;
+    width: 50%;
+    background-image: url("../assets/People.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
