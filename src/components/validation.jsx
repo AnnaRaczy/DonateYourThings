@@ -20,4 +20,16 @@ const schemaLogin = yup.object().shape({
   password: yup.string().min(6).required("Invalid password"),
 });
 
+// const schemaContact = yup.object().shape({
+//   name: yup
+//     .string()
+//     .min(2)
+//     .required("Name should be at least 2 characters long"), // one word
+//   email: yup.string().email().required("Email is not correct"),
+//   message: yup
+//     .string()
+//     .min(2)
+//     .required("Message should have at least 120 characters"),
+// });
+
 export { schema, schemaLogin };

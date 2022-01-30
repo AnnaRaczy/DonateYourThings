@@ -436,3 +436,148 @@ body {
     background-size: cover;
   }
 }
+
+// Help
+
+.help_wrapper {
+  margin-top: 3.5rem;
+  color: $header_info-btn;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .help_title {
+    font-size: 1.4rem;
+  }
+
+  .help_hr {
+    margin-top: 1rem;
+    width: 15%;
+  }
+
+  .help_options {
+    margin-top: 1.6rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+
+    &--btn {
+      margin: 0 0.7rem;
+      padding: 1em 1.9em;
+      text-align: center;
+      width: calc(100% / 3);
+      background-color: #fff;
+    }
+
+    &--btn:hover {
+      cursor: pointer;
+    }
+
+    &--btn:visited {
+      border: 0.75px solid $header_info-btn;
+    }
+
+    .middle_btn {
+      padding: 0.5em 0;
+    }
+  }
+
+  .help_text {
+    padding: 0 25rem;
+    margin-top: 2.2rem;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  .help_lists {
+  }
+}
+
+// Form
+
+.layer {
+  margin-top: 3.5rem;
+  height: 100vh;
+  background: linear-gradient(
+      $contact_form_background,
+      $contact_form_background
+    ),
+    url("../assets/Background-Contact-Form.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.contact_wrapper {
+  color: $header_info-btn;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 10%;
+  top: 20%;
+
+  .contact_title {
+    font-size: 1.4rem;
+    letter-spacing: -0.76px;
+    font-style: italic;
+  }
+
+  .contact_hr {
+    width: 20%;
+    margin-top: 0.8rem;
+  }
+
+  .contact_form {
+    margin-top: 0.8rem;
+    display: flex;
+    flex-direction: column;
+
+    .contact_form--inputs {
+      display: flex;
+    }
+
+    .contact_input {
+      font-size: 0.8rem;
+    }
+
+    .contact_email {
+      margin-left: 0.5rem;
+    }
+
+    .contact_message {
+      margin-top: 0.7rem;
+    }
+  }
+
+  .contact_btn--wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .contact_btn {
+      margin-top: 1.3rem;
+      border: 2px solid $signup_header-btn;
+      padding: 0.3em 1.5em;
+      background: none;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.contact_footer {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+
+  .contact_copyright {
+    padding-left: 5rem;
+  }
+  .icon_instagram {
+    margin-left: 0.5rem;
+  }
+}

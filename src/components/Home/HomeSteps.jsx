@@ -6,7 +6,7 @@ const FourthStep = () => {
     <div className="steps_info--box">
       {/* <div className="steps_info--imgFour"></div> */}
       {/* <img src="../../assets/Icon-4.svg" className="steps_info--imgFour"></img> */}
-      <i class="fas fa-sync-alt steps_icon"></i>
+      <i className="fas fa-sync-alt steps_icon"></i>
       <p className="steps_info--title">Order delivery</p>
       <hr className="steps_info--hr"></hr>
       <p className="steps_info--desc">

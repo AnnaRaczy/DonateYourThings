@@ -4,11 +4,33 @@ import { Link as LinkScroll } from "react-scroll";
 import { useAuth } from "../../context/AuthContext";
 
 const Contact = () => {
-  return <a className="header_info--btn">Contact</a>;
+  return (
+    <LinkScroll
+      to="contact"
+      spy={true}
+      smooth={true}
+      offset={50}
+      duration={500}
+      className="header_info--btn"
+    >
+      Contact
+    </LinkScroll>
+  );
 };
 
 const Charity = () => {
-  return <a className="header_info--btn">Charity</a>;
+  return (
+    <LinkScroll
+      to="about"
+      spy={true}
+      smooth={true}
+      offset={50}
+      duration={500}
+      className="header_info--btn"
+    >
+      Charity
+    </LinkScroll>
+  );
 };
 
 const About = () => {
