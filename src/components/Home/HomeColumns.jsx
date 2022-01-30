@@ -2,19 +2,18 @@ import React from "react";
 
 const ColumnText = () => {
   return (
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores
-      distinctio soluta libero. Animi repellendus facere adipisci eius sit, quis
-      nesciunt.
+    <p className="column_element--text">
+      Lorem ipsum dolor sit amet, consectetur adipisc Pellentesque vel enim a
+      elit viverra elementuma. Aliquam erat volutpat.
     </p>
   );
 };
 
 const ColumnRight = () => {
   return (
-    <div>
-      <p>7</p>
-      <p>Organized collections</p>
+    <div className="column_element">
+      <p className="column_element--number">7</p>
+      <p className="column_element--title">Organized collections</p>
       <ColumnText />
     </div>
   );
@@ -22,9 +21,9 @@ const ColumnRight = () => {
 
 const ColumnMiddle = () => {
   return (
-    <div>
-      <p>5</p>
-      <p>Supported charities</p>
+    <div className="column_element">
+      <p className="column_element--number">5</p>
+      <p className="column_element--title">Supported charities</p>
       <ColumnText />
     </div>
   );
@@ -32,9 +31,9 @@ const ColumnMiddle = () => {
 
 const ColumnLeft = () => {
   return (
-    <div>
-      <p>10</p>
-      <p>Donated packs</p>
+    <div className="column_element">
+      <p className="column_element--number">10</p>
+      <p className="column_element--title">Donated packs</p>
       <ColumnText />
     </div>
   );

@@ -43,24 +43,25 @@ body {
       font-size: 1rem;
       display: flex;
       justify-content: space-between;
-    }
-    .header_content--btn {
-      border: 0.75px solid $header_info-btn;
-      text-transform: uppercase;
-      padding: 0.5em 1.2em;
-      width: 47%;
-      text-align: center;
-      color: $header_info-btn;
-      border-radius: 2px;
-      text-decoration: none;
+      align-items: center;
     }
 
     .content--left {
-      text-align: center;
+      padding: 1em 0;
     }
   }
 }
 
+.header_content--btn {
+  border: 0.75px solid $header_info-btn;
+  text-transform: uppercase;
+  padding: 0.5em 1.2em;
+  width: 47%;
+  text-align: center;
+  color: $header_info-btn;
+  border-radius: 2px;
+  text-decoration: none;
+}
 .header_buttons {
   text-align: right;
   padding-top: 1.5rem;
@@ -285,4 +286,101 @@ body {
 // columns
 
 .columns_wrapper {
+  background-image: url("../assets/Columns_Background.png");
+  // width: 80%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+
+  .column_element {
+    width: calc(100% / 6);
+    margin: 2.5rem 0;
+
+    &--number {
+      color: $columns_number;
+      font-size: 3rem;
+      font-weight: 300;
+    }
+
+    &--title,
+    &--text {
+      margin-top: 1rem;
+      color: $header_info-btn;
+    }
+
+    &--title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    &--text {
+      line-height: 1.2rem;
+      font-size: 0.6rem;
+      font-family: $font-column;
+      letter-spacing: -0.32px;
+      font-style: italic;
+    }
+  }
+}
+
+// steps
+
+.steps_wrapper {
+  margin-top: 2rem;
+  text-align: center;
+  color: $header_info-btn;
+
+  .steps_title {
+    font-size: 1.4rem;
+    letter-spacing: -0.76px;
+  }
+
+  .steps_info {
+    margin-top: 2.3rem;
+    padding: 2.4em 18em;
+    background: $login_background 0% 0% no-repeat padding-box;
+    display: flex;
+    justify-content: space-between;
+  }
+  .steps_info--box {
+    width: 50%;
+    margin: 0 1.7rem;
+    display: flex;
+    flex-direction: column;
+
+    // .steps_info--imgOne,
+    // .steps_info--imgTwo,
+    // .steps_info--imgThree,
+    // .steps_info--imgFour {
+    //   width: 80%;
+    //   height: 100%;
+    // }
+
+    .steps_icon {
+      font-size: 1.7rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .steps_info--title {
+      font-size: 0.65rem;
+      margin-top: 0.3rem;
+      text-align: center;
+    }
+
+    .steps_info--hr {
+      width: 30%;
+      border: 0.1px solid $steps_hr;
+    }
+
+    .steps_info--desc {
+      font-size: 0.6rem;
+    }
+  }
+
+  .steps_btn {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-family: $header_info-btn;
+    font-weight: 300;
+  }
 }

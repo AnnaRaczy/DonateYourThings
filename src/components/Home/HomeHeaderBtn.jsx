@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 import { useAuth } from "../../context/AuthContext";
 
 const Contact = () => {
@@ -15,7 +16,18 @@ const About = () => {
 };
 
 const Story = () => {
-  return <a className="header_info--btn">Story</a>;
+  return (
+    <LinkScroll
+      to="donate"
+      spy={true}
+      smooth={true}
+      offset={50}
+      duration={500}
+      className="header_info--btn"
+    >
+      Story
+    </LinkScroll>
+  );
 };
 
 const Start = () => {
