@@ -1,7 +1,78 @@
-import React from "react";
+import React, { useState } from "react";
+import clsx from "clsx";
+import ReactPaginate from "react-paginate";
+import { dataCharity } from "./HomePagData";
+import { Charity, NonGovern, Collections } from "./HomeHelpPagination";
 
-const ListOrganizations = () => {
-  return <div className="help_lists">Help Lists</div>;
+const Paginate = ({ pageCount, onPageChange }) => {
+  return (
+    <ReactPaginate
+      previousLabel={"<<"}
+      nextLabel={">>"}
+      pageCount={pageCount}
+      onPageChange={onPageChange}
+      containerClassName={"pagination_wrapper"}
+      previousLinkClassName={"pagination_previous"}
+      nextLinkClassName={"pagination_next"}
+      activeClassName="pagination_active"
+    />
+  );
+};
+
+const ListOrganizations = ({ active }) => {
+  const [dataSet, setDataSet] = useState(dataCharity);
+  const [dataSetGov, setDataSetGov] = useState(dataCharity.slice(0, 6));
+  const [pageNum, setPageNum] = useState(0);
+
+  const dataPerPage = 3;
+  const pagesVisited = pageNum * dataPerPage;
+
+  const pageCount = Math.ceil(dataCharity.length / dataPerPage);
+  const pageCountGov = Math.ceil(dataCharity.slice(0, 6).length / dataPerPage);
+  const onPageChange = ({ selected }) => {
+    setPageNum(selected);
+  };
+
+  const displayCharities = dataSet
+    .slice(pagesVisited, pagesVisited + dataPerPage)
+    .map((elem, id) => {
+      return (
+        <div key={id} className=" help_charities--wrapper ">
+          <Charity name={elem.name} />
+        </div>
+      );
+    });
+
+  const displayGovs = dataSetGov
+    .slice(pagesVisited, pagesVisited + dataPerPage)
+    .map((elem, id) => {
+      return (
+        <div key={id} className=" help_charities--wrapper ">
+          <NonGovern name={elem.name} />
+        </div>
+      );
+    });
+
+  let component;
+  let pages;
+  if (active === 1) {
+    component = displayCharities;
+    pages = pageCount;
+  } else if (active === 2) {
+    component = displayGovs;
+    pages = pageCountGov;
+  } else {
+    component = <Collections />;
+  }
+
+  return (
+    <>
+      <div className="help_lists">
+        {component}
+        <Paginate pageCount={pages} onPageChange={onPageChange} />
+      </div>
+    </>
+  );
 };
 
 const HelpText = () => {
@@ -13,14 +84,57 @@ const HelpText = () => {
   );
 };
 
-const Organizations = () => {
+const CollectionButton = ({ active, handleChange }) => {
+  return (
+    <a
+      onClick={handleChange(3)}
+      className={clsx("help_options--btn", {
+        active: active === 3,
+      })}
+    >
+      Local collections
+    </a>
+  );
+};
+
+const GovernButton = ({ active, handleChange }) => {
+  return (
+    <a
+      onClick={handleChange(2)}
+      className={clsx("help_options--btn", "middle_btn", {
+        active: active === 2,
+      })}
+    >
+      Non-governmental organizations
+    </a>
+  );
+};
+
+const CharityButton = ({ active, handleChange }) => {
+  return (
+    <a
+      onClick={handleChange(1)}
+      className={clsx("help_options--btn", {
+        active: active === 1,
+      })}
+    >
+      Charities
+    </a>
+  );
+};
+
+const Organizations = ({ active, setActive }) => {
+  const handleChange = (id) => (e) => {
+    e.preventDefault();
+    setActive(id);
+  };
+  console.log(active);
+
   return (
     <div className="help_options">
-      <a className="help_options--btn">Charities</a>
-      <a className="help_options--btn middle_btn">
-        Non-governmental organizations
-      </a>
-      <a className="help_options--btn">Local collections</a>
+      <CharityButton active={active} handleChange={handleChange} />
+      <GovernButton active={active} handleChange={handleChange} />
+      <CollectionButton active={active} handleChange={handleChange} />
     </div>
   );
 };
@@ -35,12 +149,13 @@ const Title = () => {
 };
 
 const HomeHelp = () => {
+  const [active, setActive] = useState(1);
   return (
     <div id="help" className="help_wrapper">
       <Title />
-      <Organizations />
+      <Organizations active={active} setActive={setActive} />
       <HelpText />
-      <ListOrganizations />
+      <ListOrganizations active={active} />
     </div>
   );
 };

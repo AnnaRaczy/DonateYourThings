@@ -473,7 +473,7 @@ body {
       cursor: pointer;
     }
 
-    &--btn:visited {
+    .active {
       border: 0.75px solid $header_info-btn;
     }
 
@@ -490,6 +490,62 @@ body {
   }
 
   .help_lists {
+    width: 70%;
+    margin-top: 1rem;
+  }
+
+  .help_charities--wrapper {
+    color: $header_info-btn;
+
+    .help_charity {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .help_charity--box {
+      .help_charity--name {
+        font-size: 0.9rem;
+      }
+    }
+    .help_charity--text {
+      font-size: 0.7rem;
+      margin-right: 0.6rem;
+    }
+    .charity_examples {
+      font-weight: 300;
+    }
+  }
+
+  .pagination_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    & a {
+      margin: 0 0.6em;
+      padding: 0.3em 0.7em;
+      border-radius: 5px;
+      border: 1.5px solid $signup_header-btn;
+      background: none;
+    }
+    & a:hover {
+      cursor: pointer;
+      // border: 1.5px solid $signup_header-btn;
+    }
+
+    .pagination_active a {
+      background-color: $pagination--active;
+    }
+
+    .pagination_previous,
+    .pagination_next {
+      display: none;
+    }
+
+    .hide {
+      display: none;
+    }
   }
 }
 
@@ -524,7 +580,7 @@ body {
   }
 
   .contact_hr {
-    width: 20%;
+    width: 50%;
     margin-top: 0.8rem;
   }
 
@@ -546,7 +602,7 @@ body {
     }
 
     .contact_message {
-      margin-top: 0.7rem;
+      margin-top: 1.3rem;
     }
   }
 

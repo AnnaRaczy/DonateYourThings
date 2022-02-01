@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 // import { schemaContact } from "../components/validation";
 import { useForm, Controller } from "react-hook-form";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, OutlinedInput } from "@material-ui/core";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import img from "../../assets/Decoration.svg";
 
 const MediaIcons = () => {
   return (
@@ -31,16 +32,15 @@ const ControllerMessage = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
-        <TextField
+        <OutlinedInput
           {...field}
           className="contact_input contact_message"
-          variant="standard"
+          variant="outlined"
           multiline
           minRows={4}
           maxRows={5}
           label="Message..."
-          // placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor culpa,
-          // assumenda iusto consequuntur aspernatur alias ad at ab vitae."
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor culpa, assumenda iusto consequuntur aspernatur alias ad at ab vitae."
           type="text"
         />
       )}
@@ -140,8 +140,7 @@ const Title = () => {
   return (
     <>
       <h1 className="contact_title">Contact us</h1>
-      <hr className="contact_hr"></hr>
-      <img src="../../assets/Decoration.svg"></img>
+      <img src={img} className="contact_hr"></img>
     </>
   );
 };
