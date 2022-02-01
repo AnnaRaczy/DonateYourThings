@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 const UserError = () => {
   return (
     <p className="user_error">
-      <i className="fas fa-exclamation-circle excl_mark"></i>User not found
+      <i className="fas fa-exclamation-circle excl_mark"></i>Email or password
+      is invalid
     </p>
   );
 };
