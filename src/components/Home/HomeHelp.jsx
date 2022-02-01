@@ -4,14 +4,14 @@ import ReactPaginate from "react-paginate";
 import { dataCharity } from "./HomePagData";
 import { Charity, NonGovern, Collections } from "./HomeHelpPagination";
 
-const Paginate = ({ pageCount, onPageChange }) => {
+const Paginate = ({ pageCount, onPageChange, classType }) => {
   return (
     <ReactPaginate
       previousLabel={"<<"}
       nextLabel={">>"}
       pageCount={pageCount}
       onPageChange={onPageChange}
-      containerClassName={"pagination_wrapper"}
+      containerClassName={classType}
       previousLinkClassName={"pagination_previous"}
       nextLinkClassName={"pagination_next"}
       activeClassName="pagination_active"
@@ -19,26 +19,27 @@ const Paginate = ({ pageCount, onPageChange }) => {
   );
 };
 
-const ListOrganizations = ({ active }) => {
+const ListOrganizations = ({ active, pageNum, setPageNum }) => {
   const [dataSet, setDataSet] = useState(dataCharity);
   const [dataSetGov, setDataSetGov] = useState(dataCharity.slice(0, 6));
-  const [pageNum, setPageNum] = useState(0);
 
   const dataPerPage = 3;
   const pagesVisited = pageNum * dataPerPage;
 
   const pageCount = Math.ceil(dataCharity.length / dataPerPage);
   const pageCountGov = Math.ceil(dataCharity.slice(0, 6).length / dataPerPage);
+
   const onPageChange = ({ selected }) => {
     setPageNum(selected);
   };
+  console.log(dataSet);
 
   const displayCharities = dataSet
     .slice(pagesVisited, pagesVisited + dataPerPage)
     .map((elem, id) => {
       return (
         <div key={id} className=" help_charities--wrapper ">
-          <Charity name={elem.name} />
+          <Charity name={elem.name} desc={elem.desc} items={elem.items} />
         </div>
       );
     });
@@ -48,13 +49,14 @@ const ListOrganizations = ({ active }) => {
     .map((elem, id) => {
       return (
         <div key={id} className=" help_charities--wrapper ">
-          <NonGovern name={elem.name} />
+          <NonGovern name={elem.name} desc={elem.desc} items={elem.items} />
         </div>
       );
     });
 
   let component;
   let pages;
+  let classType = "pagination_wrapper";
   if (active === 1) {
     component = displayCharities;
     pages = pageCount;
@@ -63,13 +65,19 @@ const ListOrganizations = ({ active }) => {
     pages = pageCountGov;
   } else {
     component = <Collections />;
+    pages = pageCountGov;
+    classType = "hidden";
   }
 
   return (
     <>
       <div className="help_lists">
         {component}
-        <Paginate pageCount={pages} onPageChange={onPageChange} />
+        <Paginate
+          pageCount={pages}
+          onPageChange={onPageChange}
+          classType={classType}
+        />
       </div>
     </>
   );
@@ -123,12 +131,12 @@ const CharityButton = ({ active, handleChange }) => {
   );
 };
 
-const Organizations = ({ active, setActive }) => {
+const Organizations = ({ active, setActive, setPageNum }) => {
   const handleChange = (id) => (e) => {
     e.preventDefault();
     setActive(id);
+    setPageNum(0);
   };
-  console.log(active);
 
   return (
     <div className="help_options">
@@ -150,12 +158,21 @@ const Title = () => {
 
 const HomeHelp = () => {
   const [active, setActive] = useState(1);
+  const [pageNum, setPageNum] = useState(0);
   return (
     <div id="help" className="help_wrapper">
       <Title />
-      <Organizations active={active} setActive={setActive} />
+      <Organizations
+        active={active}
+        setActive={setActive}
+        setPageNum={setPageNum}
+      />
       <HelpText />
-      <ListOrganizations active={active} />
+      <ListOrganizations
+        active={active}
+        pageNum={pageNum}
+        setPageNum={setPageNum}
+      />
     </div>
   );
 };

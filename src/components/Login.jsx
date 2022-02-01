@@ -133,28 +133,6 @@ const Login = () => {
         <form id="login" className="" onSubmit={handleSubmit(onSubmit)}>
           {error && <UserError message={errors.email} />}
           <Controllers errors={errors} control={control} />
-          {/* <div> */}
-          {/* <TextInput
-              control={{
-                ...register("email", { required: true }),
-                required: true,
-              }}
-              label="Email..."
-              name="email"
-              type="text"
-            />
-            <p>{errors.email}</p>
-            <TextInput
-              control={{
-                ...register("password", { required: "Invalid passoword" }),
-                required: true,
-              }}
-              label="Password..."
-              name="password"
-              type="password"
-            />
-            <p>{errors.password?.message}</p> */}
-          {/* </div> */}
           <div>
             <LoginBtn />
           </div>

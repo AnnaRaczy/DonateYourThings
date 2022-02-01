@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 const CollectionExamples = () => {
   return (
     <div className="help_charity--text charity_examples">
-      lorem, lorem, lorem, lorem
+      impedit, recusandae, est
     </div>
   );
 };
@@ -43,66 +43,53 @@ const Collections = () => {
   );
 };
 
-const NonGovernExamples = () => {
-  return (
-    <div className="help_charity--text charity_examples">
-      lorem, lorem, lorem, lorem
-    </div>
-  );
+const NonGovernExamples = ({ items }) => {
+  return <div className="help_charity--text charity_examples">{items}</div>;
 };
 
-const NonGovernName = ({ name }) => {
+const NonGovernName = ({ name, desc }) => {
   return (
     <div className="help_charity--box">
       <p className="help_charity--name">
         Non-governmental Organization "{name}"
       </p>
-      <p className="help_charity--text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-        sapiente?
-      </p>
+      <p className="help_charity--text">{desc}</p>
     </div>
   );
 };
 
-const NonGovern = ({ name }) => {
+const NonGovern = ({ name, desc, items }) => {
   return (
     <>
       <div className="help_charity">
-        <NonGovernName name={name} />
-        <NonGovernExamples />
+        <NonGovernName name={name} desc={desc} />
+        <NonGovernExamples items={items} />
       </div>
       <hr className="help_charity--hr"></hr>
     </>
   );
 };
 
-const CharityExamples = () => {
-  return (
-    <div className="help_charity--text charity_examples">
-      lorem, lorem, lorem, lorem
-    </div>
-  );
+const CharityExamples = ({ items }) => {
+  return <div className="help_charity--text charity_examples">{items}</div>;
 };
 
-const CharityName = ({ name }) => {
+const CharityName = ({ name, desc }) => {
+  console.log(desc);
   return (
     <div className="help_charity--box">
       <p className="help_charity--name">Charity "{name}"</p>
-      <p className="help_charity--text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-        sapiente?
-      </p>
+      <p className="help_charity--text">{desc}</p>
     </div>
   );
 };
 
-const Charity = ({ name }) => {
+const Charity = ({ name, desc, items }) => {
   return (
     <>
       <div className="help_charity">
-        <CharityName name={name} />
-        <CharityExamples />
+        <CharityName name={name} desc={desc} />
+        <CharityExamples items={items} />
       </div>
       <hr className="help_charity--hr"></hr>
     </>

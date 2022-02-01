@@ -510,6 +510,7 @@ body {
     }
     .help_charity--text {
       font-size: 0.7rem;
+      margin-top: 0.3rem;
       margin-right: 0.6rem;
     }
     .charity_examples {
@@ -542,10 +543,9 @@ body {
     .pagination_next {
       display: none;
     }
-
-    .hide {
-      display: none;
-    }
+  }
+  .hidden {
+    visibility: hidden;
   }
 }
 

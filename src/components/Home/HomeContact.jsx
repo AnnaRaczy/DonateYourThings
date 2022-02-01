@@ -140,7 +140,7 @@ const Title = () => {
   return (
     <>
       <h1 className="contact_title">Contact us</h1>
-      <img src={img} className="contact_hr"></img>
+      {/* <img src={img} className="contact_hr"></img> */}
     </>
   );
 };
