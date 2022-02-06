@@ -64,7 +64,11 @@ const Story = () => {
 };
 
 const Start = () => {
-  return <a className="header_info--btn">Start</a>;
+  return (
+    <Link to="/" className="header_info--btn start_btn">
+      Start
+    </Link>
+  );
 };
 
 const InfoButtons = () => {

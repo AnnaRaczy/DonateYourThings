@@ -4,9 +4,10 @@ import ReactPaginate from "react-paginate";
 import { dataCharity } from "./HomePagData";
 import { Charity, NonGovern, Collections } from "./HomeHelpPagination";
 
-const Paginate = ({ pageCount, onPageChange, classType }) => {
+const Paginate = ({ page, pageCount, onPageChange, classType }) => {
   return (
     <ReactPaginate
+      forcePage={page}
       previousLabel={"<<"}
       nextLabel={">>"}
       pageCount={pageCount}
@@ -32,7 +33,6 @@ const ListOrganizations = ({ active, pageNum, setPageNum }) => {
   const onPageChange = ({ selected }) => {
     setPageNum(selected);
   };
-  console.log(dataSet);
 
   const displayCharities = dataSet
     .slice(pagesVisited, pagesVisited + dataPerPage)
@@ -66,7 +66,7 @@ const ListOrganizations = ({ active, pageNum, setPageNum }) => {
   } else {
     component = <Collections />;
     pages = pageCountGov;
-    classType = "hidden";
+    classType = "pagination_wrapper hidden";
   }
 
   return (
@@ -74,6 +74,7 @@ const ListOrganizations = ({ active, pageNum, setPageNum }) => {
       <div className="help_lists">
         {component}
         <Paginate
+          page={pageNum}
           pageCount={pages}
           onPageChange={onPageChange}
           classType={classType}

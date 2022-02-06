@@ -75,7 +75,6 @@ const CharityExamples = ({ items }) => {
 };
 
 const CharityName = ({ name, desc }) => {
-  console.log(desc);
   return (
     <div className="help_charity--box">
       <p className="help_charity--name">Charity "{name}"</p>

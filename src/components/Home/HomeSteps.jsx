@@ -62,10 +62,10 @@ const Steps = () => {
 const StepsButton = () => {
   const { currentUser } = useAuth();
 
-  const direct = currentUser ? "/" : "/login";
+  // const direct = currentUser ? "/donate" : "/login";
   return (
     <div className="steps_btn">
-      <Link to={direct} className="header_content--btn">
+      <Link to="/donate" className="header_content--btn">
         Donate
       </Link>
     </div>
@@ -86,4 +86,4 @@ const HomeSteps = () => {
   );
 };
 
-export { HomeSteps };
+export { HomeSteps, Title };

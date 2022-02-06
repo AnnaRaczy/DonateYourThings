@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-// import { schemaContact } from "../components/validation";
+import { schemaContact } from "../../components/validation";
 import { useForm, Controller } from "react-hook-form";
 import { TextField, Button, OutlinedInput } from "@material-ui/core";
+import { addMessage } from "../functions";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useNavigate } from "react-router-dom";
 import img from "../../assets/Decoration.svg";
 
 const MediaIcons = () => {
@@ -35,13 +35,12 @@ const ControllerMessage = ({ control }) => {
         <OutlinedInput
           {...field}
           className="contact_input contact_message"
-          variant="outlined"
+          // notchedOutline
           multiline
           minRows={4}
           maxRows={5}
           label="Message..."
           placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor culpa, assumenda iusto consequuntur aspernatur alias ad at ab vitae."
-          type="text"
         />
       )}
       name="message"
@@ -86,25 +85,58 @@ const ControllerName = ({ control }) => {
   );
 };
 
+const ControllerRight = ({ control, errors }) => {
+  return (
+    <div>
+      <ControllerEmail control={control} />
+      <p className="contact_error">{errors?.email?.message}</p>
+    </div>
+  );
+};
+
+const ControllerLeft = ({ control, errors }) => {
+  return (
+    <div>
+      <ControllerName control={control} />
+      <p className="contact_error">{errors?.name?.message}</p>
+    </div>
+  );
+};
+
 const Controllers = ({ errors, control }) => {
   return (
     <>
       <div className="contact_form--inputs">
-        <ControllerName control={control} />
-        <p className="">{errors?.name?.message}</p>
-        <ControllerEmail control={control} />
-        <p className="">{errors?.email?.message}</p>
+        <ControllerLeft control={control} errors={errors} />
+        <ControllerRight control={control} errors={errors} />
       </div>
       <ControllerMessage control={control} />
-      <p className="">{errors?.message?.message}</p>
+      <p className="contact_error">{errors?.message?.message}</p>
     </>
   );
 };
 
-const Form = () => {
-  const [error, setError] = useState(false);
+const MessageSuccess = () => {
+  return (
+    <p className="message_success">
+      <i className="fas fa-check-circle icon_success"></i>Message has been
+      successfully sent
+    </p>
+  );
+};
 
-  let navigate = useNavigate();
+const FormButton = () => {
+  return (
+    <div className="contact_btn--wrapper">
+      <button className="contact_btn" type="submit" form="mssg">
+        Send
+      </button>
+    </div>
+  );
+};
+
+const Form = () => {
+  const [success, setSuccess] = useState(false);
 
   const defaultValues = {
     name: "",
@@ -119,23 +151,23 @@ const Form = () => {
     formState: { errors },
   } = useForm({
     defaultValues,
-    // resolver: yupResolver(schemaContact),
+    resolver: yupResolver(schemaContact),
   });
+
+  const onSubmit = (data) => {
+    addMessage(data);
+    setSuccess(true);
+    console.log(data);
+  };
+
   return (
-    <form className="contact_form">
-      {/* {error && <UserError message={errors.email} />} */}
+    <form id="mssg" className="contact_form" onSubmit={handleSubmit(onSubmit)}>
+      {success && <MessageSuccess />}
       <Controllers errors={errors} control={control} />
     </form>
   );
 };
 
-const FormButton = () => {
-  return (
-    <div className="contact_btn--wrapper">
-      <button className="contact_btn">Send</button>
-    </div>
-  );
-};
 const Title = () => {
   return (
     <>
