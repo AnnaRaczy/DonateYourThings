@@ -7,6 +7,7 @@ import {
   StepFive,
   StepSix,
 } from "../components/Home/DonateSteps";
+import { DonateInfo } from "../components/Home/DonateInfo";
 
 const FormContext = createContext();
 
@@ -34,6 +35,9 @@ const DataProvider = ({ children }) => {
 
   console.log("currentState:", currentState);
 
+  useEffect(() => {
+    setStep(1);
+  }, []);
   const setComponent = (step) => {
     switch (step) {
       case 1:
@@ -51,12 +55,34 @@ const DataProvider = ({ children }) => {
     }
   };
 
+  const setInformation = (step) => {
+    switch (step) {
+      case 1:
+        return <DonateInfo number={0} />;
+      case 2:
+        return <DonateInfo number={1} />;
+      case 3:
+        return <DonateInfo number={1} />;
+      case 4:
+        return <DonateInfo number={2} />;
+      case 5:
+        return <DonateInfo number={2} />;
+      case 6:
+        return <DonateInfo number={3} />;
+    }
+  };
+
+  const inputsError = (street, city, code, phone, date, hour) =>
+    street || city || code || phone || date || hour ? false : true;
+
   const value = {
     currentState,
     setCurrentState,
     step,
     setStep,
     setComponent,
+    setInformation,
+    inputsError,
   };
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>;
 };

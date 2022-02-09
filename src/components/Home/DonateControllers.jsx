@@ -147,50 +147,28 @@ const ControllerStreet = ({ control, onChange }) => {
 };
 
 const ControllersDate = ({ control, errors }) => {
-  const { currentState, setCurrentState } = useContextForm();
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    const { value, name } = e.target;
-    setCurrentState({
-      ...currentState,
-      [name]: [value],
-    });
-  };
   return (
     <div className="">
-      <ControllerDate control={control} onChange={handleChange} />
+      <ControllerDate control={control} />
       <p className="">{errors?.date?.message}</p>
-      <ControllerHour control={control} onChange={handleChange} />
+      <ControllerHour control={control} />
       <p className="">{errors?.hour?.message}</p>
-      <ControllerMessage control={control} onChange={handleChange} />
+      <ControllerMessage control={control} />
       <p className="">{errors?.message?.message}</p>
     </div>
   );
 };
 
 const ControllersAddress = ({ control, errors }) => {
-  const { currentState, setCurrentState } = useContextForm();
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    const { value, name } = e.target;
-    setCurrentState({
-      ...currentState,
-      [name]: [value],
-    });
-  };
-
-  console.log(currentState);
   return (
     <div className="">
-      <ControllerStreet control={control} onChange={handleChange} />
+      <ControllerStreet control={control} />
       <p className="">{errors?.street?.message}</p>
-      <ControllerCity control={control} onChange={handleChange} />
+      <ControllerCity control={control} />
       <p className="">{errors?.city?.message}</p>
-      <ControllerCode control={control} onChange={handleChange} />
+      <ControllerCode control={control} />
       <p className="">{errors?.code?.message}</p>
-      <ControllerPhone control={control} onChange={handleChange} />
+      <ControllerPhone control={control} />
       {/* <p className="">{errors?.phone?.message}</p> */}
     </div>
   );

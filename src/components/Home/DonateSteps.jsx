@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { DonateInfo } from "./DonateInfo";
 import { Button } from "@material-ui/core";
 import { StepAddressForm } from "./DonateStepsForm";
@@ -10,6 +10,7 @@ import { SelectLocation } from "./DonateStepsLocation";
 import { SelectGroup } from "./DonateStepsGroups";
 import { SearchBox } from "./DonateStepsSearch";
 import { Confirmation } from "./DonateConfirmation";
+import { CustomizedSnackbar } from "./Snackbar";
 
 const StepButtons = ({ id }) => {
   const { step, setStep } = useContextForm();
@@ -34,6 +35,35 @@ const StepButtons = ({ id }) => {
     </div>
   );
 };
+
+const StepButtons = ({ id }) => {
+  const { step, setStep } = useContextForm();
+
+  const handleClick = () => {
+    setStep((prevState) => prevState - 1);
+  };
+
+  const handleSubmit = () => {
+    setStep((prevState) => prevState + 1);
+  };
+
+  return (
+    <div className="donate_button">
+      {step > 1 && <Button onClick={handleClick}>Back</Button>}
+      {step < 5 && (
+        <Button type="submit" form={id}>
+          Next
+        </Button>
+      )}
+      {step >= 5 && <Button onClick={handleSubmit}>Confirm</Button>}
+    </div>
+  );
+};
+
+// const withStep =
+//   (OriginalComp) =>
+//   ({ step }) =>
+//     <OriginalComp {...props} />;
 
 const StepSelectLocation = () => {
   return (
@@ -126,13 +156,17 @@ const StepOne = () => {
 };
 
 const DonateSteps = () => {
-  const { step, setComponent } = useContextForm();
+  const { step, setComponent, setInformation } = useContextForm();
 
   return (
     <>
-      <DonateInfo />
+      {setInformation(step)}
+      {/* <DonateInfo /> */}
       <div className="donate_steps--container">
         <div className="donate_steps--box">{setComponent(step)}</div>
+        {/* {error && (
+          <CustomizedSnackbar type="error" text="Fill in all inputs!" />
+        )} */}
       </div>
     </>
   );

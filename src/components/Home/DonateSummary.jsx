@@ -1,6 +1,9 @@
 import React from "react";
 import { useContextForm } from "../../context/FormContext";
 import { useForm } from "react-hook-form";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../js/firebase-config";
+
 const Subtitle = ({ text }) => {
   return (
     <div>
@@ -137,12 +140,21 @@ const SummaryThings = () => {
 };
 
 const SummaryDonation = () => {
-  const { setStep } = useContextForm();
+  const { setStep, currentState } = useContextForm();
   const { handleSubmit } = useForm({});
+
+  const usersCollectionRef = collection(db, "users");
 
   const onSubmit = () => {
     setStep((prevState) => prevState + 1);
+    const createUser = async () => {
+      await addDoc(usersCollectionRef, {
+        currentState,
+      });
+    };
+    createUser();
   };
+
   return (
     <form id="summary_confirmation" onSubmit={handleSubmit(onSubmit)}>
       <SummaryThings />

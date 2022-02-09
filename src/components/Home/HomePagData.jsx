@@ -46,4 +46,55 @@ const dataCharity = [
   },
 ];
 
-export { dataCharity };
+const dataOrg = [
+  {
+    name: "Lorem Ipsum 1",
+    desc: "Sunt alias, et adipisci cum voluptas eligendi suscipit beatae saepe quas corporis.",
+    items: "adipisci, voluptas, eligendi",
+  },
+  {
+    name: "Lorem Ipsum 2",
+    desc: "maxime consectetur hic cupiditate qui consequatur quod sapiente, rem laborum.",
+    items: "harum, amet, dolores",
+  },
+  {
+    name: "Lorem Ipsum 3",
+    desc: "Ratione neque harum amet dolores, similique dolorem id nihil preferidis.",
+    items: "itemselit, aperiam, quos",
+  },
+  {
+    name: "Lorem Ipsum 4",
+    desc: "Aperiam, quos? Velit quod mollitia recusandae praesentium quasi.",
+    items: "porro, voluptas, numquam",
+  },
+  {
+    name: "Lorem Ipsum 5",
+    desc: "Consectetur adipisicing elit. Voluptate repellat animi in labore.",
+    items: "volupta, blanditiis, mollitia",
+  },
+  {
+    name: "Lorem Ipsum 6",
+    desc: "Cum quae harum ut? Laudantium, alias reprehenderit! Esse veritatis.",
+    items: "veniam, adipisci, modi",
+  },
+];
+
+const dataCollections = [
+  {
+    name: "Lorem Ipsum 1",
+    desc: "Sunt alias, et adipisci cum voluptas eligendi suscipit beatae saepe quas corporis.",
+    items: "adipisci, voluptas, eligendi",
+  },
+  {
+    name: "Lorem Ipsum 2",
+    desc: "maxime consectetur hic cupiditate qui consequatur quod sapiente, rem laborum.",
+    items: "harum, amet, dolores",
+  },
+  {
+    name: "Lorem Ipsum 3",
+    desc: "Ratione neque harum amet dolores, similique dolorem id nihil preferidis.",
+    items: "itemselit, aperiam, quos",
+  },
+];
+
+export { dataCharity, dataOrg, dataCollections };

@@ -18,18 +18,14 @@ const InputsDate = () => {
 };
 
 const InputsAddress = () => {
-  const { setStep } = useContextForm();
-  const [value, setValue] = useState(1);
+  // const { setStep, currentState, setCurrentState } = useContextForm();
+  // const [value, setValue] = useState(1);
 
   const {
     control,
-    handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schemaAddress) });
 
-  const onSubmit = () => {
-    setStep((prevState) => prevState + 1);
-  };
   return (
     <div className="donate_form--address">
       <ControllersAddress errors={errors} control={control} />
@@ -57,14 +53,26 @@ const Address = () => {
 
 const StepAddressForm = () => {
   const { setStep } = useContextForm();
+  const { currentState, setCurrentState } = useContextForm();
+
+  const defaultValues = currentState;
+  console.log("defaultValues:", defaultValues);
 
   const {
     handleSubmit,
     formState: { errors },
-  } = useForm({});
+  } = useForm({ defaultValues, resolver: yupResolver(schemaAddress) });
 
-  const onSubmit = () => {
+  const onSubmit = (data) => {
+    console.log(data);
     setStep((prevState) => prevState + 1);
+    // const { value, name } = e.target;
+    // setCurrentState({
+    //   ...currentState,
+    //   [name]: [value],
+    // });
+    // console.log(data);
+    setCurrentState(data);
   };
   return (
     <form

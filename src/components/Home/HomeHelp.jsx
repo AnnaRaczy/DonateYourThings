@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import ReactPaginate from "react-paginate";
-import { dataCharity } from "./HomePagData";
-import { Charity, NonGovern, Collections } from "./HomeHelpPagination";
+import { dataCharity, dataOrg, dataCollections } from "./HomePagData";
+import { Charity, NonGovern, Collection } from "./HomeHelpPagination";
 
 const Paginate = ({ page, pageCount, onPageChange, classType }) => {
   return (
@@ -22,13 +22,13 @@ const Paginate = ({ page, pageCount, onPageChange, classType }) => {
 
 const ListOrganizations = ({ active, pageNum, setPageNum }) => {
   const [dataSet, setDataSet] = useState(dataCharity);
-  const [dataSetGov, setDataSetGov] = useState(dataCharity.slice(0, 6));
+  const [dataSetGov, setDataSetGov] = useState(dataOrg);
 
   const dataPerPage = 3;
   const pagesVisited = pageNum * dataPerPage;
 
   const pageCount = Math.ceil(dataCharity.length / dataPerPage);
-  const pageCountGov = Math.ceil(dataCharity.slice(0, 6).length / dataPerPage);
+  const pageCountGov = Math.ceil(dataOrg.length / dataPerPage);
 
   const onPageChange = ({ selected }) => {
     setPageNum(selected);
@@ -54,6 +54,14 @@ const ListOrganizations = ({ active, pageNum, setPageNum }) => {
       );
     });
 
+  const displayCollections = dataCollections.map((elem, id) => {
+    return (
+      <div key={id} className=" help_charities--wrapper ">
+        <Collection name={elem.name} desc={elem.desc} items={elem.items} />
+      </div>
+    );
+  });
+
   let component;
   let pages;
   let classType = "pagination_wrapper";
@@ -64,7 +72,7 @@ const ListOrganizations = ({ active, pageNum, setPageNum }) => {
     component = displayGovs;
     pages = pageCountGov;
   } else {
-    component = <Collections />;
+    component = displayCollections;
     pages = pageCountGov;
     classType = "pagination_wrapper hidden";
   }

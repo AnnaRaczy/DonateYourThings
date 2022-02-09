@@ -63,10 +63,10 @@ const Story = () => {
   );
 };
 
-const Start = () => {
+const Start = ({ text }) => {
   return (
     <Link to="/" className="header_info--btn start_btn">
-      Start
+      {text}
     </Link>
   );
 };
@@ -74,7 +74,7 @@ const Start = () => {
 const InfoButtons = () => {
   return (
     <div>
-      <Start />
+      <Start text="Start" />
       <Story />
       <About />
       <Charity />
@@ -145,4 +145,4 @@ const LoginButtons = () => {
   );
 };
 
-export { LoginButtons, InfoButtons };
+export { LoginButtons, InfoButtons, Start };

@@ -1,6 +1,7 @@
 import React from "react";
 import { Header } from "./HomeHeader";
 import { Title } from "./HomeSteps";
+import { LoginButtons, Start } from "./HomeHeaderBtn";
 
 const Step = ({ number, text }) => {
   return (
@@ -53,10 +54,19 @@ const DonateHeaderText = () => {
   );
 };
 
+const DonateButtons = () => {
+  return (
+    <div className="header_buttons">
+      <LoginButtons />
+      <Start text="Home Page" />
+    </div>
+  );
+};
+
 const DonateHeader = () => {
   return (
     <div className="donate_container">
-      <Header />
+      <DonateButtons />
       <DonateHeaderText />
     </div>
   );

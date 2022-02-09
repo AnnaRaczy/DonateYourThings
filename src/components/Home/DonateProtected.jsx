@@ -6,6 +6,7 @@ import { useAuth } from "../../context/AuthContext";
 const Protected = () => {
   const { currentUser } = useAuth();
   const location = useLocation();
+  console.log("location:", location);
 
   return currentUser ? (
     <Outlet />

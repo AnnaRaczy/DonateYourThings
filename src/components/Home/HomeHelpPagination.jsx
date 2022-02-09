@@ -1,47 +1,40 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 
-const CollectionExamples = () => {
-  return (
-    <div className="help_charity--text charity_examples">
-      impedit, recusandae, est
-    </div>
-  );
+const CollectionExamples = ({ items }) => {
+  return <div className="help_charity--text charity_examples">{items}</div>;
 };
 
-const CollectionName = ({ number }) => {
+const CollectionName = ({ name, desc }) => {
   return (
     <div className="help_charity--box">
-      <p className="help_charity--name">Collection "Lorem Ipsum {number}"</p>
-      <p className="help_charity--text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-        sapiente?
-      </p>
+      <p className="help_charity--name">Collection {name}</p>
+      <p className="help_charity--text">{desc}</p>
     </div>
   );
 };
 
-const Collection = ({ number }) => {
-  return (
-    <>
-      <div className="help_charity">
-        <CollectionName number={number} />
-        <CollectionExamples />
-      </div>
-      <hr className="help_charity--hr"></hr>
-    </>
-  );
-};
-
-const Collections = () => {
+const Collection = ({ name, desc, items }) => {
   return (
     <div className="help_charities--wrapper">
-      <Collection number="1" />
-      <Collection number="2" />
-      <Collection number="3" />
+      <div className="help_charity">
+        <CollectionName name={name} desc={desc} />
+        <CollectionExamples items={items} />
+      </div>
+      <hr className="help_charity--hr"></hr>
     </div>
   );
 };
+
+// const Collections = () => {
+//   return (
+//     <div className="help_charities--wrapper">
+//       <Collection number="1" />
+//       <Collection number="2" />
+//       <Collection number="3" />
+//     </div>
+//   );
+// };
 
 const NonGovernExamples = ({ items }) => {
   return <div className="help_charity--text charity_examples">{items}</div>;
@@ -95,4 +88,4 @@ const Charity = ({ name, desc, items }) => {
   );
 };
 
-export { Charity, NonGovern, Collections };
+export { Charity, NonGovern, Collection };
