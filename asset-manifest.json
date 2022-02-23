@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/DonateYourThings/static/css/main.7c716c9f.css",
+    "main.js": "/DonateYourThings/static/js/main.ccf17d9b.js",
+    "static/js/787.07c740fa.chunk.js": "/DonateYourThings/static/js/787.07c740fa.chunk.js",
+    "static/media/Columns_Background.png": "/DonateYourThings/static/media/Columns_Background.54dcd134c6b5241e5fbc.png",
+    "static/media/Background-Contact-Form.jpg": "/DonateYourThings/static/media/Background-Contact-Form.655c54427d3b66427460.jpg",
+    "static/media/Form-Hero-Image.jpg": "/DonateYourThings/static/media/Form-Hero-Image.75cd77265f1736b72327.jpg",
+    "static/media/People.jpg": "/DonateYourThings/static/media/People.2fa041c6275e64cce5d4.jpg",
+    "static/media/Home-Hero-Image.jpg": "/DonateYourThings/static/media/Home-Hero-Image.0c4f237f9a7b8fab82f4.jpg",
+    "static/media/Background-Form.jpg": "/DonateYourThings/static/media/Background-Form.d4bc6c8519918b328514.jpg",
+    "static/media/Signature.svg": "/DonateYourThings/static/media/Signature.8f2a001d56e8f7d883e1.svg",
+    "index.html": "/DonateYourThings/index.html",
+    "main.7c716c9f.css.map": "/DonateYourThings/static/css/main.7c716c9f.css.map",
+    "main.ccf17d9b.js.map": "/DonateYourThings/static/js/main.ccf17d9b.js.map",
+    "787.07c740fa.chunk.js.map": "/DonateYourThings/static/js/787.07c740fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7c716c9f.css",
+    "static/js/main.ccf17d9b.js"
+  ]
+}
