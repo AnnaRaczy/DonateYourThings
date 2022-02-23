@@ -4,7 +4,9 @@ import { TextField } from "@material-ui/core";
 import moment from "moment";
 
 const dateHandle = (date) => {
-  const dateString = moment(date).format("YYYY-MM-DD");
+  const plusOne = date.setDate(date.getDate() + 1);
+  const dateString = moment(plusOne).format("YYYY-MM-DD");
+  console.log(dateString);
   return dateString;
 };
 
@@ -61,7 +63,9 @@ const ControllerDate = ({ control }) => {
           variant="outlined"
           label="Date..."
           type="date"
-          inputProps={{ min: dateHandle(new Date()) }}
+          inputProps={{
+            min: dateHandle(new Date()),
+          }}
           InputLabelProps={{ shrink: true }}
         />
       )}

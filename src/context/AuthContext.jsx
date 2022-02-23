@@ -72,8 +72,7 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
-    const logged = localStorage.getItem("isLoggedIn");
-    return unsubscribe, logged;
+    return unsubscribe;
   }, []);
 
   const value = {
