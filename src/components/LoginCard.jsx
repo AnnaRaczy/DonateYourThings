@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useForm } from "react-hook-form";
 import { Header } from "./Home/HomeHeader";
 import { Link } from "react-router-dom";
 
@@ -27,23 +26,14 @@ const LoginGoogle = ({ onClick }) => {
   );
 };
 
-const LoginEmail = ({ onClick }) => {
+const LoginEmail = () => {
   return (
     <div className="login_email">
       <i className="fas fa-envelope icon_email"></i>
-      <Link to="/login-email" onClick={onClick} className="login_email--txt">
+      <Link to="/login-email" className="login_email--txt">
         {" "}
         Email
       </Link>
-    </div>
-  );
-};
-
-const SignupButton = () => {
-  return (
-    <div className="login_text--wrapper">
-      <span>Don't have an account?</span>
-      <a className="login_text--signup">Sign up</a>
     </div>
   );
 };
@@ -53,12 +43,7 @@ const Title = () => {
 };
 
 const LoginCard = () => {
-  const [open, setOpen] = useState(false);
   const { logUserInWithGoogle } = useAuth();
-
-  const onLoginClick = () => {
-    // setOpenLoginForm(true);
-  };
 
   const onGoogleClick = () => {
     logUserInWithGoogle();
@@ -70,10 +55,9 @@ const LoginCard = () => {
       <div className="login_container">
         <Title />
         <div className="login_choices">
-          <LoginEmail onClick={onLoginClick} />
+          <LoginEmail />
           <LoginGoogle onClick={onGoogleClick} />
         </div>
-        {/* <SignupButton /> */}
         <Back dest="/" />
       </div>
     </>

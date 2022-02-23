@@ -1,5 +1,4 @@
 import React from "react";
-import { Header } from "./HomeHeader";
 import { Title } from "./HomeSteps";
 import { LoginButtons, Start } from "./HomeHeaderBtn";
 

@@ -20,7 +20,8 @@ const SelectForm = () => {
   };
 
   const onSubmit = () => {
-    setStep((prevState) => prevState + 1);
+    const { bags } = currentState;
+    if (bags) setStep((prevState) => prevState + 1);
   };
   return (
     <form
@@ -35,7 +36,7 @@ const SelectForm = () => {
           id="demo-controlled-open-select"
           name="bags"
           label="bags"
-          value={value ? value : " "}
+          value={value ? currentState.bags : " "}
           onChange={handleChange}
         >
           {arr.map((val, id) => (

@@ -1,4 +1,3 @@
-import { current } from "@reduxjs/toolkit";
 import React from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -62,7 +61,6 @@ const Steps = () => {
 const StepsButton = () => {
   const { currentUser } = useAuth();
 
-  // const direct = currentUser ? "/donate" : "/login";
   return (
     <div className="steps_btn">
       <Link to="/donate" className="header_content--btn">

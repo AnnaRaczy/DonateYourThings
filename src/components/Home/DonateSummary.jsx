@@ -3,6 +3,7 @@ import { useContextForm } from "../../context/FormContext";
 import { useForm } from "react-hook-form";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../js/firebase-config";
+import { dateHandle } from "./DonateControllers";
 
 const Subtitle = ({ text }) => {
   return (
@@ -15,11 +16,13 @@ const Subtitle = ({ text }) => {
 const DateDetail = () => {
   const { currentState } = useContextForm();
 
+  const date = dateHandle(currentState.data.date);
+
   return (
     <div className="summary_donation--elems">
-      <p className="summary_elem">{currentState.date}</p>
-      <p className="summary_elem">{currentState.hour}</p>
-      <p className="summary_elem">{currentState.message}</p>
+      <p className="summary_elem">{date}</p>
+      <p className="summary_elem">{currentState.data.hour}</p>
+      <p className="summary_elem">{currentState.data.mssg}</p>
     </div>
   );
 };
@@ -36,7 +39,7 @@ const DateType = () => {
 
 const Date = () => {
   return (
-    <div className="summary_donation--wrapper">
+    <div className="summary_donation--wrapper date_box">
       <Subtitle text="Date:" />
       <div className="summary_donation--box">
         <DateType />
@@ -51,10 +54,10 @@ const AddressDetail = () => {
 
   return (
     <div className="summary_donation--elems">
-      <p className="summary_elem">{currentState.street}</p>
-      <p className="summary_elem">{currentState.city}</p>
-      <p className="summary_elem">{currentState.code}</p>
-      <p className="summary_elem">{currentState.phone}</p>
+      <p className="summary_elem">{currentState.data.street}</p>
+      <p className="summary_elem">{currentState.data.city}</p>
+      <p className="summary_elem">{currentState.data.code}</p>
+      <p className="summary_elem">{currentState.data.phone}</p>
     </div>
   );
 };
@@ -119,7 +122,7 @@ const DonationDetails = () => {
     <p className="summary_donation--items">
       <i className="fas fa-tshirt summary_shirt"></i>
       {currentState.bags} bags{", "}
-      {currentState.things.map((el) => el)}
+      {currentState.things.map((el) => " • " + el)}
     </p>
   );
 };

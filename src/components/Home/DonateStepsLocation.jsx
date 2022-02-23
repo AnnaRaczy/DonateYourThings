@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 const SelectLocation = () => {
   const { setStep, currentState, setCurrentState } = useContextForm();
   const { handleSubmit } = useForm({});
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("Wroclaw");
 
   const cities = ["Wroclaw", "Warsaw", "Krakow", "Poznan", "Katowice"];
 
@@ -21,7 +21,8 @@ const SelectLocation = () => {
   };
 
   const onSubmit = () => {
-    setStep((prevState) => prevState + 1);
+    const { location, groups } = currentState;
+    if (location && groups) setStep((prevState) => prevState + 1);
   };
   return (
     <div className="donate_selections--location">
@@ -36,12 +37,11 @@ const SelectLocation = () => {
           size="small"
           sx={{ m: 1, minWidth: 120 }}
         >
-          {/* <InputLabel id="demo-controlled-open-select-label">Select</InputLabel> */}
           <Select
             labelId="demo-controlled-open-select-label"
             id="demo-controlled-open-select"
             name="location"
-            value={value ? value : " "}
+            value={value ? currentState.location : " "}
             onChange={handleChange}
           >
             {cities.map((val, id) => (

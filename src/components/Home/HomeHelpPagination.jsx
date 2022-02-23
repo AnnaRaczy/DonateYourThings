@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import ReactPaginate from "react-paginate";
+import React from "react";
 
 const CollectionExamples = ({ items }) => {
   return <div className="help_charity--text charity_examples">{items}</div>;
@@ -25,16 +24,6 @@ const Collection = ({ name, desc, items }) => {
     </div>
   );
 };
-
-// const Collections = () => {
-//   return (
-//     <div className="help_charities--wrapper">
-//       <Collection number="1" />
-//       <Collection number="2" />
-//       <Collection number="3" />
-//     </div>
-//   );
-// };
 
 const NonGovernExamples = ({ items }) => {
   return <div className="help_charity--text charity_examples">{items}</div>;

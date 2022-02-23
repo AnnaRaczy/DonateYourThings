@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { DonateInfo } from "./DonateInfo";
+import React from "react";
 import { Button } from "@material-ui/core";
 import { StepAddressForm } from "./DonateStepsForm";
 import { SummaryDonation } from "./DonateSummary";
@@ -10,7 +9,6 @@ import { SelectLocation } from "./DonateStepsLocation";
 import { SelectGroup } from "./DonateStepsGroups";
 import { SearchBox } from "./DonateStepsSearch";
 import { Confirmation } from "./DonateConfirmation";
-import { CustomizedSnackbar } from "./Snackbar";
 
 const StepButtons = ({ id }) => {
   const { step, setStep } = useContextForm();
@@ -35,35 +33,6 @@ const StepButtons = ({ id }) => {
     </div>
   );
 };
-
-const StepButtons = ({ id }) => {
-  const { step, setStep } = useContextForm();
-
-  const handleClick = () => {
-    setStep((prevState) => prevState - 1);
-  };
-
-  const handleSubmit = () => {
-    setStep((prevState) => prevState + 1);
-  };
-
-  return (
-    <div className="donate_button">
-      {step > 1 && <Button onClick={handleClick}>Back</Button>}
-      {step < 5 && (
-        <Button type="submit" form={id}>
-          Next
-        </Button>
-      )}
-      {step >= 5 && <Button onClick={handleSubmit}>Confirm</Button>}
-    </div>
-  );
-};
-
-// const withStep =
-//   (OriginalComp) =>
-//   ({ step }) =>
-//     <OriginalComp {...props} />;
 
 const StepSelectLocation = () => {
   return (
@@ -118,7 +87,7 @@ const StepFour = () => {
     <div>
       <StepNumber number="4" />
       <StepAddressForm />
-      <StepButtons id="delivery_details" />
+      <StepButtons id="address_date" />
     </div>
   );
 };
@@ -161,12 +130,8 @@ const DonateSteps = () => {
   return (
     <>
       {setInformation(step)}
-      {/* <DonateInfo /> */}
       <div className="donate_steps--container">
         <div className="donate_steps--box">{setComponent(step)}</div>
-        {/* {error && (
-          <CustomizedSnackbar type="error" text="Fill in all inputs!" />
-        )} */}
       </div>
     </>
   );

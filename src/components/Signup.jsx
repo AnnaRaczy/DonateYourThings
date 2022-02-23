@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { schema } from "./validation";
 import { useForm, Controller } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { Header } from "./Home/HomeHeader";
 import { Back } from "./LoginCard";
 import { TextField, Button } from "@material-ui/core";
@@ -90,7 +89,6 @@ const ControllerName = ({ control }) => {
 };
 
 const Controllers = ({ errors, control }) => {
-  console.log(errors?.name?.message);
   return (
     <div className="signup_inputs">
       <ControllerName control={control} />
@@ -109,8 +107,8 @@ const Controllers = ({ errors, control }) => {
 
 const SignupButton = () => {
   return (
-    <div className="signup_btn--wrapper">
-      <Button className="signup_btn" type="submit" form="signup">
+    <div className="login_btn--wrapper">
+      <Button className="login_btn" type="submit" form="signup">
         Create Account
       </Button>
     </div>
@@ -143,16 +141,9 @@ const Signup = () => {
   });
   const onSubmit = (data) => {
     setError(false);
-    console.log("Data:", data);
     signUserUp(data.name, data.email, data.password).catch(() => {
       setError(true);
     });
-    // const createUser = async () => {
-    //   await addDoc(usersCollectionRef, {
-    //     email: data.email,
-    //   });
-    // };
-    // createUser();
   };
 
   if (currentUser) {

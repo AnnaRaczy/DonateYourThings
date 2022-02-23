@@ -24,8 +24,7 @@ const schemaContact = yup.object().shape({
   name: yup
     .string()
     .min(2, "Name should be at least 2 characters long")
-    // .matches(/^[aA-zZ\s]+$/, "Name should be one word")
-    .required("Name is required"), // one word
+    .required("Name is required"),
   email: yup
     .string()
     .email("Email is not correct")
@@ -39,14 +38,17 @@ const schemaContact = yup.object().shape({
 const schemaAddress = yup.object().shape({
   street: yup
     .string()
-    .min(2, "Address should be at least 2 characters long")
-    .required("Street is required"),
+    .min(2)
+    .required("Address should be at least 2 characters long"),
   city: yup
     .string()
-    .min(2, "City name should be at least 2 characters long")
-    .required("City is required"),
-  code: yup.number().max(5),
-  hour: yup.number().min(9).max(9),
+    .min(2)
+    .required("City name should be at least 2 characters long"),
+  code: yup.string().max(7).required("Code is required"),
+  phone: yup.number().min(9).required("Phone is required"),
+  date: yup.date().required("Date is required"),
+  hour: yup.number().positive().min(8).max(18).required("Hour is required."),
+  message: yup.string(),
 });
 
 export { schema, schemaLogin, schemaContact, schemaAddress };

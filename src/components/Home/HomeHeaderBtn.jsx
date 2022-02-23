@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
 import { useAuth } from "../../context/AuthContext";
+import { useContextForm } from "../../context/FormContext";
 
 const Contact = () => {
   return (
@@ -64,8 +65,14 @@ const Story = () => {
 };
 
 const Start = ({ text }) => {
+  const { setStep, defaultValues, setCurrentState } = useContextForm();
+
+  const handleClick = () => {
+    setStep(1);
+    setCurrentState(defaultValues);
+  };
   return (
-    <Link to="/" className="header_info--btn start_btn">
+    <Link to="/" className="header_info--btn start_btn" onClick={handleClick}>
       {text}
     </Link>
   );
@@ -125,7 +132,6 @@ const LoginButtons = () => {
 
   const handleSignOut = () => {
     signUserOut();
-    console.log(currentUser);
   };
   return (
     <div className="header_buttons--login">

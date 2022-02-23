@@ -1,87 +1,73 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { ControllersAddress, ControllersDate } from "./DonateControllers";
 import { useContextForm } from "../../context/FormContext";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaAddress } from "../validation";
 
-const InputsDate = () => {
-  const {
-    control,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schemaAddress) });
+const InputsDate = ({ control, errors }) => {
   return (
     <div className="donate_form--date">
-      <ControllersDate errors={errors} control={control} />
+      <ControllersDate control={control} errors={errors} />
     </div>
   );
 };
 
-const InputsAddress = () => {
-  // const { setStep, currentState, setCurrentState } = useContextForm();
-  // const [value, setValue] = useState(1);
-
-  const {
-    control,
-    formState: { errors },
-  } = useForm({ resolver: yupResolver(schemaAddress) });
-
+const InputsAddress = ({ control, errors }) => {
   return (
     <div className="donate_form--address">
-      <ControllersAddress errors={errors} control={control} />
+      <ControllersAddress control={control} errors={errors} />
     </div>
   );
 };
 
-const Date = () => {
+const Date = ({ control, errors }) => {
   return (
     <div>
       <h2 className="donate_form--title">Date:</h2>
-      <InputsDate />
+      <InputsDate control={control} errors={errors} />
     </div>
   );
 };
 
-const Address = () => {
+const Address = ({ control, errors }) => {
   return (
     <div>
       <h2 className="donate_form--title">Address:</h2>
-      <InputsAddress />
+      <InputsAddress control={control} errors={errors} />
     </div>
   );
 };
 
 const StepAddressForm = () => {
-  const { setStep } = useContextForm();
-  const { currentState, setCurrentState } = useContextForm();
-
-  const defaultValues = currentState;
-  console.log("defaultValues:", defaultValues);
+  const { setStep, currentState, setCurrentState } = useContextForm();
 
   const {
+    control,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm({ defaultValues, resolver: yupResolver(schemaAddress) });
+  } = useForm({
+    defaultValues: currentState.data,
+    mode: "onSubmit",
+    resolver: yupResolver(schemaAddress),
+  });
 
   const onSubmit = (data) => {
-    console.log(data);
+    setCurrentState({
+      ...currentState,
+      data,
+    });
     setStep((prevState) => prevState + 1);
-    // const { value, name } = e.target;
-    // setCurrentState({
-    //   ...currentState,
-    //   [name]: [value],
-    // });
-    // console.log(data);
-    setCurrentState(data);
   };
   return (
     <form
-      id="delivery_details"
+      id="address_date"
       className="donate_form--columns"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Address />
-      <Date />
+      <Address control={control} errors={errors} />
+      <Date control={control} errors={errors} />
     </form>
   );
 };

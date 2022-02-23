@@ -7,6 +7,7 @@ import { Header } from "./Home/HomeHeader";
 import { Back } from "./LoginCard";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
+import { current } from "@reduxjs/toolkit";
 
 const UserError = () => {
   return (
@@ -64,19 +65,6 @@ const Controllers = ({ errors, control }) => {
   );
 };
 
-// const TextInput = ({ label, name, type, control }) => {
-//   return (
-//     <TextField
-//       className="inputs_field"
-//       variant="outlined"
-//       label={label}
-//       name={name}
-//       type={type}
-//       {...control}
-//     />
-//   );
-// };
-
 const LoginBtn = () => {
   return (
     <div className="login_btn--wrapper">
@@ -97,7 +85,6 @@ const Login = () => {
 
   let navigate = useNavigate();
 
-  console.log("currentUser:", currentUser);
   const defaultValues = {
     email: "",
     password: "",
@@ -118,9 +105,9 @@ const Login = () => {
     logUserIn(data.email, data.password).catch(() => {
       setError(true);
     });
-    console.log(data);
   };
 
+  console.log(currentUser);
   if (currentUser) {
     navigate("/");
   }

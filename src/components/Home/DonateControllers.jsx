@@ -1,31 +1,14 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import { TextField, OutlinedInput } from "@material-ui/core";
-import { useContextForm } from "../../context/FormContext";
+import { TextField } from "@material-ui/core";
+import moment from "moment";
 
-const ControllerMessage = ({ control, onChange }) => {
-  return (
-    <Controller
-      render={({ field }) => (
-        <OutlinedInput
-          {...field}
-          size="small"
-          className="inputs_form"
-          multiline
-          minRows={2}
-          maxRows={4}
-          label="Message..."
-          placeholder="Message..."
-          onChange={onChange}
-        />
-      )}
-      name="message"
-      control={control}
-    />
-  );
+const dateHandle = (date) => {
+  const dateString = moment(date).format("YYYY-MM-DD");
+  return dateString;
 };
 
-const ControllerHour = ({ control, onChange }) => {
+const ControllerMessage = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
@@ -34,9 +17,31 @@ const ControllerHour = ({ control, onChange }) => {
           size="small"
           className="inputs_form"
           variant="outlined"
+          multiline
+          minRows={2}
+          maxRows={4}
+          label="Message..."
+          placeholder="Message..."
+        />
+      )}
+      name="mssg"
+      control={control}
+    />
+  );
+};
+
+const ControllerHour = ({ control }) => {
+  return (
+    <Controller
+      render={({ field }) => (
+        <TextField
+          {...field}
+          size="small"
+          InputProps={{ inputProps: { min: 8, max: 18 } }}
+          className="inputs_form"
+          variant="outlined"
           label="Hour..."
           type="number"
-          onChange={onChange}
         />
       )}
       name="hour"
@@ -45,7 +50,7 @@ const ControllerHour = ({ control, onChange }) => {
   );
 };
 
-const ControllerDate = ({ control, onChange }) => {
+const ControllerDate = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
@@ -56,7 +61,7 @@ const ControllerDate = ({ control, onChange }) => {
           variant="outlined"
           label="Date..."
           type="date"
-          onChange={onChange}
+          inputProps={{ min: dateHandle(new Date()) }}
           InputLabelProps={{ shrink: true }}
         />
       )}
@@ -66,7 +71,7 @@ const ControllerDate = ({ control, onChange }) => {
   );
 };
 
-const ControllerPhone = ({ control, onChange }) => {
+const ControllerPhone = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
@@ -77,7 +82,6 @@ const ControllerPhone = ({ control, onChange }) => {
           variant="outlined"
           label="Phone..."
           type="number"
-          onChange={onChange}
         />
       )}
       name="phone"
@@ -86,7 +90,7 @@ const ControllerPhone = ({ control, onChange }) => {
   );
 };
 
-const ControllerCode = ({ control, onChange }) => {
+const ControllerCode = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
@@ -97,7 +101,6 @@ const ControllerCode = ({ control, onChange }) => {
           variant="outlined"
           label="Zip code..."
           type="text"
-          onChange={onChange}
         />
       )}
       name="code"
@@ -106,7 +109,7 @@ const ControllerCode = ({ control, onChange }) => {
   );
 };
 
-const ControllerCity = ({ control, onChange }) => {
+const ControllerCity = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
@@ -117,7 +120,6 @@ const ControllerCity = ({ control, onChange }) => {
           variant="outlined"
           label="City..."
           type="text"
-          onChange={onChange}
         />
       )}
       name="city"
@@ -126,7 +128,7 @@ const ControllerCity = ({ control, onChange }) => {
   );
 };
 
-const ControllerStreet = ({ control, onChange }) => {
+const ControllerStreet = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
@@ -137,7 +139,6 @@ const ControllerStreet = ({ control, onChange }) => {
           variant="outlined"
           label="Street..."
           type="text"
-          onChange={onChange}
         />
       )}
       name="street"
@@ -150,11 +151,11 @@ const ControllersDate = ({ control, errors }) => {
   return (
     <div className="">
       <ControllerDate control={control} />
-      <p className="">{errors?.date?.message}</p>
+      <p className="inputs_error">{errors?.date?.message}</p>
       <ControllerHour control={control} />
-      <p className="">{errors?.hour?.message}</p>
+      <p className="inputs_error">{errors?.hour?.message}</p>
       <ControllerMessage control={control} />
-      <p className="">{errors?.message?.message}</p>
+      <p className="inputs_error">{errors?.mssg?.message}</p>
     </div>
   );
 };
@@ -163,15 +164,15 @@ const ControllersAddress = ({ control, errors }) => {
   return (
     <div className="">
       <ControllerStreet control={control} />
-      <p className="">{errors?.street?.message}</p>
+      <p className="inputs_error">{errors?.street?.message}</p>
       <ControllerCity control={control} />
-      <p className="">{errors?.city?.message}</p>
+      <p className="inputs_error">{errors?.city?.message}</p>
       <ControllerCode control={control} />
-      <p className="">{errors?.code?.message}</p>
+      <p className="inputs_error">{errors?.code?.message}</p>
       <ControllerPhone control={control} />
-      {/* <p className="">{errors?.phone?.message}</p> */}
+      <p className="inputs_error">{errors?.phone?.message}</p>
     </div>
   );
 };
 
-export { ControllersAddress, ControllersDate };
+export { ControllersAddress, ControllersDate, dateHandle };

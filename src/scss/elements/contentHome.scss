@@ -1,0 +1,279 @@
+.columns_wrapper {
+  background-image: url("../../assets/Columns_Background.png");
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+
+  .column_element {
+    width: calc(100% / 6);
+    margin: 2.5rem 0;
+
+    &--number {
+      color: $columns_number;
+      font-size: 3rem;
+      font-weight: 300;
+    }
+
+    &--title,
+    &--text {
+      margin-top: 1rem;
+      color: $header_info-btn;
+    }
+
+    &--title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    &--text {
+      line-height: 1.2rem;
+      font-size: 0.6rem;
+      font-family: $font-column;
+      letter-spacing: -0.32px;
+      font-style: italic;
+    }
+  }
+}
+
+.steps_wrapper {
+  margin-top: 2rem;
+  text-align: center;
+  color: $header_info-btn;
+
+  .steps_title {
+    font-size: 1.4rem;
+    letter-spacing: -0.76px;
+  }
+
+  .steps_info {
+    margin-top: 2.3rem;
+    padding: 3% 20%;
+    background: $login_background 0% 0% no-repeat padding-box;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 1100px) {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media screen and (max-width: 600px) {
+      padding: 2.4em 10%;
+    }
+  }
+  .steps_info--box {
+    width: 50%;
+    margin: 0 1.7rem;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (max-width: 1100px) {
+      margin-bottom: 1.7rem;
+    }
+
+    .steps_icon {
+      font-size: 1.7rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .steps_info--title {
+      font-size: 0.65rem;
+      margin-top: 0.3rem;
+      text-align: center;
+    }
+
+    .steps_info--hr {
+      width: 30%;
+      border: 0.1px solid $steps_hr;
+    }
+
+    .steps_info--desc {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+.about_wrapper {
+  margin-top: 3.5rem;
+  display: flex;
+  min-height: 500px;
+  color: $header_info-btn;
+  font-family: $font-base;
+
+  @media screen and (max-width: 1100px) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about_text--box {
+    background: $login_background 0% 0% no-repeat padding-box;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media screen and (max-width: 1100px) {
+      padding-top: 2rem;
+      width: 100%;
+    }
+
+    .about_text--title {
+      font-size: 1.4rem;
+    }
+
+    .about_text--hr {
+      margin-top: 1rem;
+      width: 40%;
+    }
+
+    .about_text--content {
+      margin: 1.5em 5em 1em 5em;
+      font-size: 0.9rem;
+      letter-spacing: -0.6px;
+      line-height: 25px;
+    }
+
+    .about_text--signature {
+      height: 100px;
+      background-image: url("../../assets/Signature.svg");
+      background-repeat: no-repeat;
+      background-size: 30%;
+      background-position: right;
+      margin: 1.5em 5em 1em 5em;
+
+      @media screen and (max-width: 1100px) {
+        background-size: 20%;
+      }
+    }
+  }
+
+  .about_text--img {
+    height: auto;
+    width: 50%;
+    background-image: url("../../assets/People.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    @media screen and (max-width: 1100px) {
+      width: 100%;
+      background-size: 100% 100%;
+      height: 600px;
+    }
+  }
+}
+
+.help_wrapper {
+  margin-top: 3.5rem;
+  color: $header_info-btn;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .help_title {
+    font-size: 1.4rem;
+  }
+
+  .help_hr {
+    margin-top: 1rem;
+    width: 18%;
+    border: 0.75px solid $signup_header-btn;
+  }
+
+  .help_options {
+    margin-top: 1.6rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .help_options--btn {
+      margin: 0 0.7rem;
+      padding: 1em 1.9em;
+      text-align: center;
+      width: calc(100% / 3);
+      background-color: #fff;
+      border: 1.4px solid transparent;
+    }
+
+    .help_options--btn:hover {
+      cursor: pointer;
+    }
+
+    .active {
+      border: 1.4px solid $signup_header-btn;
+    }
+
+    .middle_btn {
+      padding: 0.5em 1em;
+    }
+  }
+
+  .help_text {
+    padding: 0 30%;
+    margin-top: 2.2rem;
+    text-align: center;
+    font-size: 0.8rem;
+
+    @media screen and (max-width: 1100px) {
+    }
+  }
+
+  .help_lists {
+    width: 70%;
+    margin-top: 1rem;
+  }
+
+  .help_charities--wrapper {
+    color: $header_info-btn;
+
+    .help_charity {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .help_charity--box {
+      .help_charity--name {
+        font-size: 0.9rem;
+      }
+    }
+    .help_charity--text {
+      font-size: 0.7rem;
+      margin-top: 0.3rem;
+      margin-right: 0.6rem;
+    }
+    .charity_examples {
+      font-weight: 300;
+    }
+  }
+
+  .pagination_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+    & a {
+      margin: 0 0.6em;
+      padding: 0.3em 0.7em;
+      border-radius: 5px;
+      border: 1.5px solid $signup_header-btn;
+      background: none;
+    }
+    & a:hover {
+      cursor: pointer;
+    }
+
+    .pagination_active a {
+      background-color: $pagination--active;
+    }
+
+    .pagination_previous,
+    .pagination_next {
+      display: none;
+    }
+  }
+  .hidden {
+    visibility: hidden;
+  }
+}

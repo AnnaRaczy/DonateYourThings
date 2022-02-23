@@ -3,10 +3,11 @@ import { Box, TextField } from "@material-ui/core";
 import { useContextForm } from "../../context/FormContext";
 import { useForm } from "react-hook-form";
 import { StepTitle } from "./DonateSteps";
+
 const Search = () => {
   const { setStep, currentState, setCurrentState } = useContextForm();
   const { handleSubmit } = useForm({});
-  const [, setValue] = useState("");
+  const [value, setValue] = useState("Message");
 
   const handleChange = (e) => {
     const { value, name } = e.target;
@@ -18,7 +19,10 @@ const Search = () => {
   };
 
   const onSubmit = () => {
-    setStep((prevState) => prevState + 1);
+    const { location, groups } = currentState;
+    if (location !== undefined || groups !== undefined) {
+      setStep((prevState) => prevState + 1);
+    }
   };
   return (
     <Box
@@ -30,13 +34,12 @@ const Search = () => {
         "& > :not(style)": { m: 1, width: "25ch" },
       }}
       noValidate
-      autoComplete="off"
     >
       <TextField
         id="outlined-basic"
-        label="Type..."
         variant="outlined"
         name="customGroup"
+        value={value ? currentState.customGroup : ""}
         onChange={handleChange}
       />
     </Box>

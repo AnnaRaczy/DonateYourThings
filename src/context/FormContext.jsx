@@ -20,20 +20,18 @@ const defaultValues = {
   bags: "",
   location: "",
   groups: "",
-  customGroups: "",
+  customGroup: "",
   street: "",
   city: "",
   code: "",
   phone: "",
   date: "",
-  hour: "",
-  message: "",
+  hour: 0,
+  mssg: "",
 };
 const DataProvider = ({ children }) => {
   const [currentState, setCurrentState] = useState(defaultValues);
   const [step, setStep] = useState(1);
-
-  console.log("currentState:", currentState);
 
   useEffect(() => {
     setStep(1);
@@ -52,6 +50,8 @@ const DataProvider = ({ children }) => {
         return <StepFive />;
       case 6:
         return <StepSix />;
+      default:
+        return null;
     }
   };
 
@@ -62,27 +62,22 @@ const DataProvider = ({ children }) => {
       case 2:
         return <DonateInfo number={1} />;
       case 3:
-        return <DonateInfo number={1} />;
+        return <DonateInfo number={2} />;
       case 4:
-        return <DonateInfo number={2} />;
-      case 5:
-        return <DonateInfo number={2} />;
-      case 6:
         return <DonateInfo number={3} />;
+      default:
+        return null;
     }
   };
 
-  const inputsError = (street, city, code, phone, date, hour) =>
-    street || city || code || phone || date || hour ? false : true;
-
   const value = {
+    defaultValues,
     currentState,
     setCurrentState,
     step,
     setStep,
     setComponent,
     setInformation,
-    inputsError,
   };
   return <FormContext.Provider value={value}>{children}</FormContext.Provider>;
 };

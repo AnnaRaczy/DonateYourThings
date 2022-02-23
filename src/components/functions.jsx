@@ -10,7 +10,6 @@ const addMessage = async (data) => {
   };
 
   const response = await fetch(url, fetchOptions).catch((err) => {
-    console.log(err);
     throw new Error("Error has occured:", err);
   });
   return response;

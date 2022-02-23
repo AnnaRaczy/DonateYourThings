@@ -1,0 +1,129 @@
+.layer {
+  margin-top: 3.5rem;
+  height: 100vh;
+  background: linear-gradient(
+      $contact_form_background,
+      $contact_form_background
+    ),
+    url("../../assets/Background-Contact-Form.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.contact_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 10%;
+  top: 20%;
+
+  .contact_title {
+    font-size: 1.4rem;
+    letter-spacing: -0.76px;
+    font-style: italic;
+  }
+
+  .contact_hr {
+    width: 20%;
+    margin-top: 0.8rem;
+    border: 0.75px solid $signup_header-btn;
+  }
+
+  .contact_form {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    .contact_form--inputs {
+      display: flex;
+    }
+
+    .contact_input {
+      font-size: 0.5rem;
+    }
+
+    .contact_email {
+      margin-left: 0.5rem;
+    }
+
+    .contact_message {
+      margin-top: 1.3rem;
+    }
+
+    .MuiOutlinedInput-notchedOutline,
+    .MuiOutlinedInput-notchedOutline:hover {
+      border: 1px solid $login_border;
+    }
+
+    .PrivateNotchedOutline-root-1,
+    .MuiOutlinedInput-notchedOutline {
+      border-width: 1px;
+    }
+  }
+
+  .contact_btn--wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .message_success {
+    margin-bottom: 1.5rem;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $success;
+  }
+
+  .hidden {
+    margin-bottom: 1.5rem;
+    font-size: 0.7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $success;
+    color: transparent;
+  }
+
+  .icon_success {
+    margin-right: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .contact_error {
+    border: 1px solid black;
+    margin-top: 0.3rem;
+    font-size: 0.6rem;
+    color: $error;
+    border: none;
+  }
+}
+
+.contact_footer {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+  }
+
+  .contact_copyright {
+    padding-left: 5rem;
+
+    @media screen and (max-width: 900px) {
+      padding-left: 20%;
+    }
+  }
+  .icon_instagram {
+    margin-left: 0.5rem;
+  }
+}

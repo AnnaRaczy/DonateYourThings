@@ -6,8 +6,8 @@ import { StepTitle } from "./DonateSteps";
 
 const SelectGroup = () => {
   const { setStep, currentState, setCurrentState } = useContextForm();
-  const { handleSubmit } = useForm({});
-  const [value, setValue] = useState("");
+  const { handleSubmit } = useForm({ defaultValues: currentState.groups });
+  const [value, setValue] = useState("Children");
   const categories = [
     "Children",
     "Single mothers",
@@ -26,7 +26,10 @@ const SelectGroup = () => {
   };
 
   const onSubmit = () => {
-    setStep((prevState) => prevState + 1);
+    const { location, groups } = currentState;
+    if ((location !== undefined) & (groups !== undefined)) {
+      setStep((prevState) => prevState + 1);
+    }
   };
 
   return (
@@ -42,11 +45,10 @@ const SelectGroup = () => {
           size="small"
           sx={{ m: 1, minWidth: 120 }}
         >
-          {/* <InputLabel id="demo-simple-select-label">Group</InputLabel> */}
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={value ? value : " "}
+            value={value ? currentState.groups : " "}
             name="groups"
             onChange={handleChange}
           >

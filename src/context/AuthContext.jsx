@@ -21,25 +21,32 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
 
   async function logUserIn(email, password) {
-    console.log(email, password);
-    await signInWithEmailAndPassword(auth, email, password).catch((error) => {
-      console.log(error);
-      throw error;
-    });
+    await signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        localStorage("isLoggedIn", true);
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
   async function logUserInWithGoogle() {
     const provider = new GoogleAuthProvider();
 
-    await signInWithPopup(auth, provider).catch((error) => {
-      throw error;
-    });
+    await signInWithPopup(auth, provider)
+      .then(() => {
+        localStorage("isLoggedIn", true);
+      })
+      .catch((error) => {
+        throw error;
+      });
   }
 
   async function signUserOut() {
     await signOut(auth).catch((error) => {
       throw error;
     });
+    localStorage.clear();
   }
 
   async function signUserUp(name, email, password) {
@@ -48,6 +55,9 @@ export function AuthProvider({ children }) {
         updateProfile(auth.currentUser, {
           displayName: name,
         });
+      })
+      .then(() => {
+        localStorage("isLoggedIn", true);
       })
       .catch((error) => {
         throw error;
@@ -62,8 +72,8 @@ export function AuthProvider({ children }) {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     });
-
-    return unsubscribe;
+    const logged = localStorage.getItem("isLoggedIn");
+    return unsubscribe, logged;
   }, []);
 
   const value = {

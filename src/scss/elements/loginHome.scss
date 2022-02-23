@@ -1,0 +1,108 @@
+.login_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(
+    rgba(238, 234, 234, 0.151),
+    rgba(238, 232, 232, 0.322)
+  );
+
+  padding: 1em 1em;
+  border-radius: 8px;
+
+  .login_title {
+    font-size: 1.2rem;
+    font-family: $font-base;
+    color: $header_info-btn;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .login_choices {
+    display: flex;
+    flex-direction: column;
+    padding: 0.8em 3em;
+    border-radius: 3px;
+
+    &--field {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .left_arrow--icon {
+    padding-right: 0.5rem;
+    color: $header_login-btn;
+  }
+
+  .login_text--wrapper {
+    font-style: italic;
+    font-size: 0.8rem;
+
+    .login_text--signup {
+      text-decoration: underline;
+      font-style: normal;
+      margin-left: 1rem;
+    }
+  }
+}
+
+.login_inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  padding: 0 1.5em;
+
+  .inputs_field {
+    margin-bottom: 0.5rem;
+  }
+
+  .login_error {
+    color: red;
+    font-size: 0.5rem;
+    line-height: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.signup_wrapper {
+  margin-top: 2.5rem;
+  padding: 1em 3em;
+  .signup_inputs {
+    display: flex;
+    flex-direction: column;
+    .inputs_field--reg {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .signup_error {
+    color: red;
+    font-size: 0.5rem;
+    line-height: 1.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.user_error {
+  color: $error;
+  font-size: 0.7rem;
+  margin-top: -0.2rem;
+  margin-bottom: 1rem;
+}
+
+.excl_mark {
+  margin-right: 0.3rem;
+}
+
+.user_logged {
+  margin-right: 1rem;
+  .hello_name {
+    font-style: italic;
+    margin-left: 0.2rem;
+  }
+}

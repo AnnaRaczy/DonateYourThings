@@ -23,8 +23,10 @@ const Header = () => {
 function HomeHeader() {
   return (
     <div className="header_container">
-      <Header />
-      <Content />
+      <div className="header_wrapper">
+        <Header />
+        <Content />
+      </div>
     </div>
   );
 }

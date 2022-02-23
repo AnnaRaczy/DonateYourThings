@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { schemaContact } from "../../components/validation";
 import { useForm, Controller } from "react-hook-form";
-import { TextField, Button, OutlinedInput } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import { addMessage } from "../functions";
 import { yupResolver } from "@hookform/resolvers/yup";
-import img from "../../assets/Decoration.svg";
+import clsx from "clsx";
 
 const MediaIcons = () => {
   return (
@@ -32,15 +32,14 @@ const ControllerMessage = ({ control }) => {
   return (
     <Controller
       render={({ field }) => (
-        <OutlinedInput
+        <TextField
           {...field}
           className="contact_input contact_message"
-          // notchedOutline
+          variant="outlined"
           multiline
           minRows={4}
           maxRows={5}
           label="Message..."
-          placeholder="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor culpa, assumenda iusto consequuntur aspernatur alias ad at ab vitae."
         />
       )}
       name="message"
@@ -55,8 +54,9 @@ const ControllerEmail = ({ control }) => {
       render={({ field }) => (
         <TextField
           {...field}
+          size="small"
           className="contact_input  contact_email"
-          variant="standard"
+          variant="outlined"
           label="Email..."
           type="text"
         />
@@ -73,8 +73,9 @@ const ControllerName = ({ control }) => {
       render={({ field }) => (
         <TextField
           {...field}
+          size="small"
           className="contact_input contact_name"
-          variant="standard"
+          variant="outlined"
           label="Name..."
           type="text"
         />
@@ -116,9 +117,13 @@ const Controllers = ({ errors, control }) => {
   );
 };
 
-const MessageSuccess = () => {
+const MessageSuccess = ({ visibility }) => {
   return (
-    <p className="message_success">
+    <p
+      className={clsx("message_success", {
+        hidden: !visibility,
+      })}
+    >
       <i className="fas fa-check-circle icon_success"></i>Message has been
       successfully sent
     </p>
@@ -128,7 +133,11 @@ const MessageSuccess = () => {
 const FormButton = () => {
   return (
     <div className="contact_btn--wrapper">
-      <button className="contact_btn" type="submit" form="mssg">
+      <button
+        className="header_logout--btn header_btn--border"
+        type="submit"
+        form="mssg"
+      >
         Send
       </button>
     </div>
@@ -136,18 +145,18 @@ const FormButton = () => {
 };
 
 const Form = () => {
-  const [success, setSuccess] = useState(false);
+  const [visibility, setVisibility] = useState(false);
 
   const defaultValues = {
     name: "",
     email: "",
     message: "",
   };
-
   const {
     control,
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues,
@@ -156,13 +165,13 @@ const Form = () => {
 
   const onSubmit = (data) => {
     addMessage(data);
-    setSuccess(true);
-    console.log(data);
+    setVisibility(true);
+    reset();
   };
 
   return (
     <form id="mssg" className="contact_form" onSubmit={handleSubmit(onSubmit)}>
-      {success && <MessageSuccess />}
+      <MessageSuccess visibility={visibility} />
       <Controllers errors={errors} control={control} />
     </form>
   );
@@ -172,7 +181,7 @@ const Title = () => {
   return (
     <>
       <h1 className="contact_title">Contact us</h1>
-      {/* <img src={img} className="contact_hr"></img> */}
+      <hr className="contact_hr"></hr>
     </>
   );
 };
