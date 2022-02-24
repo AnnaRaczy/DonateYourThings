@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { Protected } from "./components/Home/DonateProtected";
 import { Home } from "./components/Home/Home";
 import { Form } from "./components/Form";
@@ -15,7 +15,7 @@ function App() {
   return (
     <AuthProvider>
       <DataProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/form" element={<Form />} />
@@ -26,7 +26,7 @@ function App() {
               <Route path="/donate" element={<Donate />} />
             </Route>
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </DataProvider>
     </AuthProvider>
   );
