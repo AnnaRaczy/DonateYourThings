@@ -14,17 +14,17 @@ const Back = ({ dest }) => {
   );
 };
 
-const LoginGoogle = ({ onClick }) => {
-  return (
-    <div className="login_email">
-      <i className="fab fa-google icon_google"></i>
-      <Link to="/" onClick={onClick} className="login_email--txt">
-        {" "}
-        Google
-      </Link>
-    </div>
-  );
-};
+// const LoginGoogle = ({ onClick }) => {
+//   return (
+//     <div className="login_email">
+//       <i className="fab fa-google icon_google"></i>
+//       <Link to="/" onClick={onClick} className="login_email--txt">
+//         {" "}
+//         Google
+//       </Link>
+//     </div>
+//   );
+// };
 
 const LoginEmail = () => {
   return (
@@ -56,7 +56,7 @@ const LoginCard = () => {
         <Title />
         <div className="login_choices">
           <LoginEmail />
-          <LoginGoogle onClick={onGoogleClick} />
+          {/* <LoginGoogle onClick={onGoogleClick} /> */}
         </div>
         <Back dest="/" />
       </div>
