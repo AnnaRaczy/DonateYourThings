@@ -2,8 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup,
-  GoogleAuthProvider,
   updateProfile,
   signOut,
   onAuthStateChanged,
@@ -30,18 +28,6 @@ export function AuthProvider({ children }) {
       });
   }
 
-  async function logUserInWithGoogle() {
-    const provider = new GoogleAuthProvider();
-
-    await signInWithPopup(auth, provider)
-      .then(() => {
-        localStorage("isLoggedIn", true);
-      })
-      .catch((error) => {
-        throw error;
-      });
-  }
-
   async function signUserOut() {
     await signOut(auth).catch((error) => {
       throw error;
@@ -57,7 +43,7 @@ export function AuthProvider({ children }) {
         });
       })
       .then(() => {
-        localStorage("isLoggedIn", true);
+        localStorage.setItem("isLoggedIn", true);
       })
       .catch((error) => {
         throw error;
@@ -71,6 +57,7 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      localStorage.setItem("isLoggedIn", true);
     });
     return unsubscribe;
   }, []);
@@ -79,7 +66,6 @@ export function AuthProvider({ children }) {
     currentUser,
     getUser,
     logUserIn,
-    logUserInWithGoogle,
     signUserOut,
     signUserUp,
   };

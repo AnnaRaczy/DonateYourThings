@@ -5,10 +5,21 @@ import { SummaryDonation } from "./DonateSummary";
 import { useContextForm } from "../../context/FormContext";
 import { StepForm } from "./DonateStepsThings";
 import { StepSelect } from "./DonateStepsBags";
-import { SelectLocation } from "./DonateStepsLocation";
-import { SelectGroup } from "./DonateStepsGroups";
-import { SearchBox } from "./DonateStepsSearch";
+import { Combined } from "./DonateStepsSearch";
 import { Confirmation } from "./DonateConfirmation";
+import clsx from "clsx";
+
+const Error = ({ error, text }) => {
+  return (
+    <p
+      className={clsx("inputs_error error--form", {
+        errorHidden: !error,
+      })}
+    >
+      {text}
+    </p>
+  );
+};
 
 const StepButtons = ({ id }) => {
   const { step, setStep } = useContextForm();
@@ -16,7 +27,6 @@ const StepButtons = ({ id }) => {
   const handleClick = () => {
     setStep((prevState) => prevState - 1);
   };
-
   const handleSubmit = () => {
     setStep((prevState) => prevState + 1);
   };
@@ -38,11 +48,7 @@ const StepSelectLocation = () => {
   return (
     <>
       <div className="donate_selections--third">
-        <SelectLocation />
-        <SelectGroup />
-      </div>
-      <div>
-        <SearchBox />
+        <Combined />
       </div>
     </>
   );
@@ -146,4 +152,5 @@ export {
   StepFive,
   StepSix,
   StepTitle,
+  Error,
 };

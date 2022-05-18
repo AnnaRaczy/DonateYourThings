@@ -9,9 +9,11 @@ const addMessage = async (data) => {
     body: JSON.stringify(data),
   };
 
-  const response = await fetch(url, fetchOptions).catch((err) => {
-    throw new Error("Error has occured:", err);
-  });
+  const response = await fetch(url, fetchOptions)
+    .then(console.log("Message Sent"))
+    .catch((err) => {
+      throw new Error("Error has occured:", err);
+    });
   return response;
 };
 

@@ -3,7 +3,7 @@ import { Link } from "react-scroll";
 
 const Organize = () => {
   return (
-    <a href="" className="header_content--btn">
+    <a href="#" className="header_content--btn">
       Organize collection
     </a>
   );

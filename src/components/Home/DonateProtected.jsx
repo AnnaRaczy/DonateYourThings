@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 
 const Protected = () => {
   const location = useLocation();
 
-  const user = localStorage.getItem("isLoggedIn");
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-  return !user ? (
+  return isLoggedIn ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />

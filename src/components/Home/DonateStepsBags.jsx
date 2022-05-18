@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { useContextForm } from "../../context/FormContext";
 import { useForm } from "react-hook-form";
 import { FormControl, InputLabel, Select, MenuItem } from "@material-ui/core";
+import { Error } from "./DonateSteps";
 
 const SelectForm = () => {
   const { setStep, currentState, setCurrentState } = useContextForm();
   const { handleSubmit } = useForm({});
-  const [value, setValue] = useState(1);
+  const [error, setError] = useState(false);
   const arr = [1, 2, 3, 4, 5];
 
   const handleChange = (e) => {
     e.preventDefault();
+    setError(false);
     const { value, name } = e.target;
-    setValue(value);
     setCurrentState({
       ...currentState,
       [name]: value,
@@ -22,6 +23,7 @@ const SelectForm = () => {
   const onSubmit = () => {
     const { bags } = currentState;
     if (bags) setStep((prevState) => prevState + 1);
+    setError(true);
   };
   return (
     <form
@@ -36,7 +38,7 @@ const SelectForm = () => {
           id="demo-controlled-open-select"
           name="bags"
           label="bags"
-          value={value ? currentState.bags : " "}
+          value={currentState.bags}
           onChange={handleChange}
         >
           {arr.map((val, id) => (
@@ -46,6 +48,7 @@ const SelectForm = () => {
           ))}
         </Select>
       </FormControl>
+      <Error error={error} text="Please choose an option" />
     </form>
   );
 };

@@ -26,7 +26,7 @@ const defaultValues = {
   code: "",
   phone: "",
   date: "",
-  hour: 0,
+  hour: "",
   mssg: "",
 };
 const DataProvider = ({ children }) => {

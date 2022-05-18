@@ -154,7 +154,6 @@ const Form = () => {
   };
   const {
     control,
-    register,
     handleSubmit,
     reset,
     formState: { errors },

@@ -15,14 +15,14 @@ const Paginate = ({ page, pageCount, onPageChange, classType }) => {
       containerClassName={classType}
       previousLinkClassName={"pagination_previous"}
       nextLinkClassName={"pagination_next"}
-      activeClassName="pagination_active"
+      activeClassName={"pagination_active"}
     />
   );
 };
 
 const ListOrganizations = ({ active, pageNum, setPageNum }) => {
-  const [dataSet, setDataSet] = useState(dataCharity);
-  const [dataSetGov, setDataSetGov] = useState(dataOrg);
+  const [dataSet] = useState(dataCharity);
+  const [dataSetGov] = useState(dataOrg);
 
   const dataPerPage = 3;
   const pagesVisited = pageNum * dataPerPage;

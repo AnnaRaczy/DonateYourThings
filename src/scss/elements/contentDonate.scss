@@ -151,6 +151,11 @@
 
   .donate_steps--form {
     margin-top: 2.5rem;
+    padding-right: 80%;
+
+    @media (max-width: 1335px) {
+      padding-right: 60%;
+    }
   }
 
   .MuiTypography-body1 {
@@ -214,15 +219,24 @@
     width: 100%;
     margin-bottom: 1rem;
   }
+}
+.inputs_error {
+  border: 1px solid black;
+  margin-bottom: 0.3rem;
+  padding-left: 0.5rem;
+  font-size: 0.6rem;
+  color: $error;
+  border: none;
+}
 
-  .inputs_error {
-    border: 1px solid black;
-    margin-bottom: 0.3rem;
-    padding-left: 0.5rem;
-    font-size: 0.6rem;
-    color: $error;
-    border: none;
-  }
+.error--form {
+  margin-top: 0.7rem;
+  margin-bottom: 0.5rem;
+  visibility: none;
+}
+
+.errorHidden {
+  color: transparent;
 }
 
 .summary_donation--title {

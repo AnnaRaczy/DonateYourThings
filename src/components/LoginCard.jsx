@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+import React from "react";
 import { Header } from "./Home/HomeHeader";
 import { Link } from "react-router-dom";
 
@@ -13,18 +12,6 @@ const Back = ({ dest }) => {
     </div>
   );
 };
-
-// const LoginGoogle = ({ onClick }) => {
-//   return (
-//     <div className="login_email">
-//       <i className="fab fa-google icon_google"></i>
-//       <Link to="/" onClick={onClick} className="login_email--txt">
-//         {" "}
-//         Google
-//       </Link>
-//     </div>
-//   );
-// };
 
 const LoginEmail = () => {
   return (
@@ -43,12 +30,6 @@ const Title = () => {
 };
 
 const LoginCard = () => {
-  const { logUserInWithGoogle } = useAuth();
-
-  const onGoogleClick = () => {
-    logUserInWithGoogle();
-  };
-
   return (
     <>
       <Header />
@@ -56,7 +37,6 @@ const LoginCard = () => {
         <Title />
         <div className="login_choices">
           <LoginEmail />
-          {/* <LoginGoogle onClick={onGoogleClick} /> */}
         </div>
         <Back dest="/" />
       </div>

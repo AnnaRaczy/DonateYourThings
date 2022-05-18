@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
 const FourthStep = () => {
@@ -59,8 +58,6 @@ const Steps = () => {
 };
 
 const StepsButton = () => {
-  const { currentUser } = useAuth();
-
   return (
     <div className="steps_btn">
       <Link to="/donate" className="header_content--btn">

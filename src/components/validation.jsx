@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import "yup-phone";
 
 const schema = yup.object().shape({
   name: yup
@@ -38,16 +39,34 @@ const schemaContact = yup.object().shape({
 const schemaAddress = yup.object().shape({
   street: yup
     .string()
-    .min(2)
-    .required("Address should be at least 2 characters long"),
+    .min(3, "Must be at least 3 characters long")
+    .matches(/^[aA-zZ\s]+$/, "Only characters are allowed")
+    .required(),
   city: yup
     .string()
-    .min(2)
-    .required("City name should be at least 2 characters long"),
-  code: yup.string().max(7).required("Code is required"),
-  phone: yup.number().min(9).required("Phone is required"),
-  date: yup.date().required("Date is required"),
-  hour: yup.number().positive().min(8).max(18).required("Hour is required."),
+    .min(3, "Must be at least 3 characters long")
+    .matches(/^[aA-zZ\s]+$/, "Only characters are allowed")
+    .required(),
+  code: yup
+    .string()
+    .matches(/^[0-9]{2}\-[0-9]{3}$/, "Must contain 6 digits")
+    .required(),
+  phone: yup
+    .number()
+    .typeError("Must contain 10 digits")
+    .test(
+      "len",
+      "Must contain 10 digits",
+      (val) => val.toString().length === 10
+    )
+    .required(),
+  date: yup.string().required("Date is required"),
+  hour: yup
+    .number()
+    .typeError("Must be between 8 and 18")
+    .min(8, "must be at earliest 8")
+    .max(18, "must be between at latest 18")
+    .required("Hour is required."),
   message: yup.string(),
 });
 

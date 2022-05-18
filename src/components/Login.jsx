@@ -7,7 +7,6 @@ import { Header } from "./Home/HomeHeader";
 import { Back } from "./LoginCard";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
-import { current } from "@reduxjs/toolkit";
 
 const UserError = () => {
   return (
@@ -92,7 +91,6 @@ const Login = () => {
 
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors },
   } = useForm({

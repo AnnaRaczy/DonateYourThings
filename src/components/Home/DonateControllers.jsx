@@ -3,10 +3,9 @@ import { Controller } from "react-hook-form";
 import { TextField } from "@material-ui/core";
 import moment from "moment";
 
-const dateHandle = (date) => {
-  const plusOne = date.setDate(date.getDate() + 1);
+const dateHandle = (date, n) => {
+  const plusOne = date.setDate(date.getDate() + n);
   const dateString = moment(plusOne).format("YYYY-MM-DD");
-  console.log(dateString);
   return dateString;
 };
 
@@ -64,7 +63,8 @@ const ControllerDate = ({ control }) => {
           label="Date..."
           type="date"
           inputProps={{
-            min: dateHandle(new Date()),
+            min: dateHandle(new Date(), 1),
+            max: dateHandle(new Date(), 30),
           }}
           InputLabelProps={{ shrink: true }}
         />

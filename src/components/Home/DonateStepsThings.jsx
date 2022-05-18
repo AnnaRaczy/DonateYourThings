@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormGroup, FormControlLabel, Checkbox } from "@material-ui/core";
 import { useContextForm } from "../../context/FormContext";
 import { useForm } from "react-hook-form";
+import { Error } from "./DonateSteps";
 
 const StepForm = () => {
   const { setStep, currentState, setCurrentState } = useContextForm();
+  const [error, setError] = useState(false);
 
   const { handleSubmit } = useForm({ defaultChecked: currentState.things });
 
@@ -17,7 +19,8 @@ const StepForm = () => {
   ];
 
   const handleChange = (e) => {
-    const { value, name } = e.target;
+    const { value } = e.target;
+    setError(false);
 
     if (!currentState.things.includes(value)) {
       setCurrentState((prevState) => ({
@@ -38,6 +41,7 @@ const StepForm = () => {
     if (currentState.things.length !== 0) {
       setStep((prevState) => prevState + 1);
     }
+    setError(true);
   };
 
   return (
@@ -79,6 +83,7 @@ const StepForm = () => {
           checked={currentState.things.includes(opts[4]) ? true : false}
         />
       </FormGroup>
+      <Error error={error} text="Please choose at least one option" />
     </form>
   );
 };

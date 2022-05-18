@@ -45,19 +45,15 @@ const StepAddressForm = () => {
   const {
     control,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
-    defaultValues: currentState.data,
+    defaultValues: currentState,
     mode: "onSubmit",
     resolver: yupResolver(schemaAddress),
   });
 
   const onSubmit = (data) => {
-    setCurrentState({
-      ...currentState,
-      data,
-    });
+    setCurrentState({ ...currentState, ...data });
     setStep((prevState) => prevState + 1);
   };
   return (

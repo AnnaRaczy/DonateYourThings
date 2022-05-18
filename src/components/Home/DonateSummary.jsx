@@ -3,7 +3,6 @@ import { useContextForm } from "../../context/FormContext";
 import { useForm } from "react-hook-form";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../js/firebase-config";
-import { dateHandle } from "./DonateControllers";
 
 const Subtitle = ({ text }) => {
   return (
@@ -16,13 +15,11 @@ const Subtitle = ({ text }) => {
 const DateDetail = () => {
   const { currentState } = useContextForm();
 
-  const date = dateHandle(currentState.data.date);
-
   return (
     <div className="summary_donation--elems">
-      <p className="summary_elem">{date}</p>
-      <p className="summary_elem">{currentState.data.hour}</p>
-      <p className="summary_elem">{currentState.data.mssg}</p>
+      <p className="summary_elem">{currentState.date}</p>
+      <p className="summary_elem">{currentState.hour}</p>
+      <p className="summary_elem">{currentState.mssg}</p>
     </div>
   );
 };
@@ -54,10 +51,10 @@ const AddressDetail = () => {
 
   return (
     <div className="summary_donation--elems">
-      <p className="summary_elem">{currentState.data.street}</p>
-      <p className="summary_elem">{currentState.data.city}</p>
-      <p className="summary_elem">{currentState.data.code}</p>
-      <p className="summary_elem">{currentState.data.phone}</p>
+      <p className="summary_elem">{currentState.street}</p>
+      <p className="summary_elem">{currentState.city}</p>
+      <p className="summary_elem">{currentState.code}</p>
+      <p className="summary_elem">{currentState.phone}</p>
     </div>
   );
 };
