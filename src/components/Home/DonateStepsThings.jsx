@@ -40,6 +40,7 @@ const StepForm = () => {
   const onSubmit = () => {
     if (currentState.things.length !== 0) {
       setStep((prevState) => prevState + 1);
+      return;
     }
     setError(true);
   };

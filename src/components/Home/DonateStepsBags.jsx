@@ -22,7 +22,10 @@ const SelectForm = () => {
 
   const onSubmit = () => {
     const { bags } = currentState;
-    if (bags) setStep((prevState) => prevState + 1);
+    if (bags) {
+      setStep((prevState) => prevState + 1);
+      return;
+    }
     setError(true);
   };
   return (

@@ -101,41 +101,19 @@ const HelpText = () => {
   );
 };
 
-const CollectionButton = ({ active, handleChange }) => {
+const Buttons = ({ active, handleChange, num, text, classN }) => {
   return (
     <a
-      onClick={handleChange(3)}
-      className={clsx("help_options--btn", {
-        active: active === 3,
-      })}
+      onClick={handleChange(num)}
+      className={clsx(
+        "help_options--btn",
+        { classN },
+        {
+          active: active === num,
+        }
+      )}
     >
-      Local collections
-    </a>
-  );
-};
-
-const GovernButton = ({ active, handleChange }) => {
-  return (
-    <a
-      onClick={handleChange(2)}
-      className={clsx("help_options--btn", "middle_btn", {
-        active: active === 2,
-      })}
-    >
-      Non-governmental organizations
-    </a>
-  );
-};
-
-const CharityButton = ({ active, handleChange }) => {
-  return (
-    <a
-      onClick={handleChange(1)}
-      className={clsx("help_options--btn", {
-        active: active === 1,
-      })}
-    >
-      Charities
+      {text}
     </a>
   );
 };
@@ -149,9 +127,25 @@ const Organizations = ({ active, setActive, setPageNum }) => {
 
   return (
     <div className="help_options">
-      <CharityButton active={active} handleChange={handleChange} />
-      <GovernButton active={active} handleChange={handleChange} />
-      <CollectionButton active={active} handleChange={handleChange} />
+      <Buttons
+        active={active}
+        handleChange={handleChange}
+        num={1}
+        text="Charities"
+      />
+      <Buttons
+        active={active}
+        handleChange={handleChange}
+        num={2}
+        text="Non-governmental organizations"
+        classN="middle_btn"
+      />
+      <Buttons
+        active={active}
+        handleChange={handleChange}
+        num={3}
+        text="Local collections"
+      />
     </div>
   );
 };

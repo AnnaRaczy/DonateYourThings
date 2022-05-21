@@ -121,7 +121,7 @@ const SearchBox = () => {
   return (
     <div>
       <StepTitle
-        text="Search for organization (optional):"
+        text="Add your organization (optional):"
         className="step_title"
       />
       <Search />
