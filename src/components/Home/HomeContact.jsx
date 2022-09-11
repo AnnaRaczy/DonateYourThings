@@ -198,4 +198,4 @@ const HomeContact = () => {
   );
 };
 
-export { HomeContact };
+export { HomeContact, MessageSuccess };
